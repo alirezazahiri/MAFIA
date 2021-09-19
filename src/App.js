@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from "react-router-dom";
 
-function App() {
+// Contexts
+import LanguageContextProvider from "./contexts/LanguageContextProvider";
+import RolesContextProvider from "./contexts/RolesContextProvider";
+
+// Components
+import Home from "./components/Home";
+import GameSetup from './components/GameSetup';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LanguageContextProvider>
+      <RolesContextProvider>
+        <Switch>
+          <Route path="/game-setup" component={GameSetup} />
+          <Route path="/" component={Home} exact />
+        </Switch>
+      </RolesContextProvider>
+    </LanguageContextProvider>
   );
-}
+};
 
 export default App;
