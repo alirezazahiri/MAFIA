@@ -8,6 +8,9 @@ import App from "./App";
 // Style
 import "./index.css";
 
+// dists
+import 'font-awesome/css/font-awesome.css'
+
 ReactDOM.render(
   <BrowserRouter>
     <App />

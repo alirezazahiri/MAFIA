@@ -11,7 +11,6 @@ const RolesContextProvider = ({ children }) => {
   const [roles, setRoles] = useState(getRoles(language));
   const { characters, names } = roles;
 
-  console.log(characters)
   return (
     <RolesContext.Provider value={{ characters, names, setRoles }}>
       {children}
