@@ -6,6 +6,7 @@ import PlayerButton from "./common/PlayerButton";
 // Services
 import getLocalData from "../services/getLocalData";
 import giveRoles from "../services/shuffleRoles";
+import make from '../services/makePlayersDataDicttionary';
 
 // Toast
 import { ToastContainer, toast } from "react-toastify";
@@ -13,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const PlayerButtons = () => {
   const players = JSON.parse(getLocalData("players"));
+  const charactersInGame = JSON.parse(getLocalData("charactersInGame"))
 
   const [playersRole, setPlayersRole] = useState({});
 
@@ -22,8 +24,8 @@ const PlayerButtons = () => {
 
   const updateHandler = () => {
     const player_role_dictionary = giveRoles(
-      JSON.parse(getLocalData("players")),
-      JSON.parse(getLocalData("charactersInGame"))
+      players,
+      charactersInGame
     );
 
     localStorage.setItem(
@@ -42,6 +44,8 @@ const PlayerButtons = () => {
       draggable: true,
       progress: undefined,
     });
+
+    make(players)
   };
 
   return (

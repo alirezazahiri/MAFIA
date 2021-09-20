@@ -18,7 +18,7 @@ const Navbar = () => {
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-              to="/pablo"
+              to="/"
             >
               {title}
             </Link>
@@ -49,7 +49,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  to="/game-setup"
+                  to="/god-vision"
                 >
                   {gods_room}
                 </Link>

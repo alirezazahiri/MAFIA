@@ -10,6 +10,7 @@ import GameSetup from "./components/GameSetup";
 import PlayerButtons from "./components/PlayerButtons";
 import Scenarios from './components/Scenarios';
 import Navbar from "./components/Navbar";
+import GodVision from './components/GodVision';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <RolesContextProvider>
         <Navbar />
         <Switch>
+          <Route path="/god-vision" component={GodVision} />
           <Route path="/scenarios" component={Scenarios} />
           <Route path="/players-roles" component={PlayerButtons} />
           <Route path="/game-setup" component={GameSetup} />

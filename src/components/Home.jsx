@@ -19,6 +19,7 @@ const Home = (props) => {
   };
 
   const clickHandler = () => {
+    localStorage.clear()
     localStorage.setItem("playersCount", playersCount);
     props.history.push("/game-setup");
   };
