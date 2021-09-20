@@ -1,15 +1,11 @@
 import React from "react";
 import parse from "html-react-parser";
 
+// Services
+import getColor from '../../services/getColor';
+
 const ScenarioCard = ({ title, description, html, type, icon }) => {
-  
-  const getColor = () => {
-    if (type === "citizen") return "#66DE93";
-    if (type === "mafia") return "#DA0037";
-    if (type === "independent") return "#5C527F";
-    if (type === "mid-independent") return "#F6D167";
-  };
-  const color = getColor()
+  const color = getColor(type)
 
   return (
     <div style={{ border: `1px solid ${color}` }}>

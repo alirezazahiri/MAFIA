@@ -5,9 +5,12 @@ import { getGameSetup } from "../services/getData";
 
 // Contexts
 import { LanguageContext } from "../contexts/LanguageContextProvider";
-import NameEnterModal from "./modals/Modal";
+
+// Components
+import Modal from "./modals/Modal";
 
 const initialState = {
+  type: "",
   nameEnter: false,
   charSelect: false,
 };
@@ -16,18 +19,27 @@ const reducer = (state, action) => {
   switch (action) {
     case "CHARACTERS_SELECT":
       return {
+        type: "charSelect",
         nameEnter: false,
         charSelect: true,
+      };
+    case "CLOSE_CHAR_MODAL":
+      return {
+        ...state,
+        type: "",
+        charSelect: false,
       };
 
     case "NAME_ENTER":
       return {
+        type: "nameEnter",
         nameEnter: true,
         charSelect: false,
       };
     case "CLOSE_NAME_MODAL":
       return {
         ...state,
+        type: "",
         nameEnter: false,
       };
 
@@ -36,7 +48,7 @@ const reducer = (state, action) => {
   }
 };
 
-const GameSetup = () => {
+const GameSetup = (props) => {
   const { language } = useContext(LanguageContext);
   const { title, description, prompt_1 } = getGameSetup(language);
 
@@ -48,11 +60,23 @@ const GameSetup = () => {
         <h1>{title}</h1>
         <p>{description}</p>
       </div>
+      
       <button onClick={() => dispatch("NAME_ENTER")}>{prompt_1}</button>
+      {/* <button onClick={() => dispatch("CHARACTERS_SELECT")}>{prompt_1}</button> */}
+      
       {/* Modals */}
-      <NameEnterModal
+      <Modal
+        type={state.type}
         show={state.nameEnter}
+        changeModalHandler={() => dispatch("CHARACTERS_SELECT")}
         closeHandler={() => dispatch("CLOSE_NAME_MODAL")}
+      />
+      <Modal
+        type={state.type}
+        show={state.charSelect}
+        backHandler={() => dispatch("NAME_ENTER")}
+        closeHandler={() => dispatch("CLOSE_CHAR_MODAL")}
+        history={props.history}
       />
     </div>
   );

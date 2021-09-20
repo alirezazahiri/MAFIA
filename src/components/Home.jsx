@@ -19,6 +19,7 @@ const Home = (props) => {
   };
 
   const clickHandler = () => {
+    localStorage.setItem("playersCount", playersCount);
     props.history.push("/game-setup");
   };
 
@@ -36,7 +37,12 @@ const Home = (props) => {
           value={playersCount}
           onChange={changeHandler}
         />
-        <button onClick={clickHandler} disabled={playersCount}>{start}</button>
+        <button
+          onClick={clickHandler}
+          disabled={playersCount < 4 || playersCount > 80}
+        >
+          {start}
+        </button>
       </div>
     </div>
   );
