@@ -1,5 +1,4 @@
 import React from "react";
-import parse from "html-react-parser";
 
 // Services
 import getColor from '../../services/getColor';
@@ -21,7 +20,7 @@ const ScenarioCard = ({ title, description, html, type, icon }) => {
       </div>
       <div>
         <p>{description}</p>
-        {html && parse(html)}
+        <div dangerouslySetInnerHTML={{__html: html}}></div>
       </div>
     </div>
   );

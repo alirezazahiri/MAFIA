@@ -49,7 +49,7 @@ const Modal = ({
       JSON.stringify(player_role_dictionary)
     );
 
-    history.push("/game-control");
+    history.push("/players-roles");
   };
 
   return (

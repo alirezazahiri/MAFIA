@@ -7,14 +7,18 @@ import RolesContextProvider from "./contexts/RolesContextProvider";
 // Components
 import Home from "./components/Home";
 import GameSetup from "./components/GameSetup";
-import GameControl from './components/GameControl';
+import PlayerButtons from "./components/PlayerButtons";
+import Scenarios from './components/Scenarios';
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <LanguageContextProvider>
       <RolesContextProvider>
+        <Navbar />
         <Switch>
-          <Route path="/game-control" component={GameControl} />
+          <Route path="/scenarios" component={Scenarios} />
+          <Route path="/players-roles" component={PlayerButtons} />
           <Route path="/game-setup" component={GameSetup} />
           <Route path="/" component={Home} exact />
         </Switch>

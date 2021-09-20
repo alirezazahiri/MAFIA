@@ -11,7 +11,7 @@ import giveRoles from "../services/shuffleRoles";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const GameControl = () => {
+const PlayerButtons = () => {
   const players = JSON.parse(getLocalData("players"));
 
   const [playersRole, setPlayersRole] = useState({});
@@ -33,7 +33,7 @@ const GameControl = () => {
 
     setPlayersRole(player_role_dictionary);
 
-    toast.success("roles updated successfully", {
+    toast.success("Roles Updated Successfully", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -55,4 +55,4 @@ const GameControl = () => {
   );
 };
 
-export default GameControl;
+export default PlayerButtons;

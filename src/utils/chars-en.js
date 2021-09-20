@@ -669,15 +669,43 @@ const independents = [
       "She can use one of her potions every night. Each potion gives Saghar a special ability. The condition for her victory is to stay among the last 3 people.",
     html: `
       <div>
-        <div class="p-2" style="border: 0.5px solid #5C527F; border-radius: 12px; background: rgba(0, 0, 0, 0.2);">
-          <p style="text-align: center; border-bottom: 1px solid #5C527F; color: #5C527F;">She has 8 potions</p> 
-          <p style="text-align: center; border-bottom: 1px solid rgba(0, 0, 0, 0.2);"><span style="color: #5C527F;">Death</span></br> eliminates the target </p>
-          <p style="text-align: center; border-bottom: 1px solid rgba(0, 0, 0, 0.2);"><span style="color: #5C527F;">Citizen-killer</span></br> by using this, God will choose a random citizen to eliminate </p>
-          <p style="text-align: center; border-bottom: 1px solid rgba(0, 0, 0, 0.2);"><span style="color: #5C527F;">Mafia-killer</span></br> by using this, God will choose a random mafia to eliminate</p>
-          <p style="text-align: center; border-bottom: 1px solid rgba(0, 0, 0, 0.2);"><span style="color: #5C527F;">Reveal</span></br> the target should reveal his/her role to all the players</p>
-          <p style="text-align: center; border-bottom: 1px solid rgba(0, 0, 0, 0.2);"><span style="color: #5C527F;">Sickening</span></br> the target will get sick with no signs and after 48 hours will be eliminated in the middle of the day (This sickness is not contagious)</p>
-          <p style="text-align: center; border-bottom: 1px solid rgba(0, 0, 0, 0.2);"><span style="color: #5C527F;">Craziness</span></br> by using this the target can't use his/her ability that night, but instead chooses a player and the chosen player will be eliminated, and the player is silenced for 24 hours</p>
-          <p style="text-align: center;"><span style="color: #5C527F;">Undying</span></br> she has two Undying potions, by using them she can't be eliminated, except by voting</p>
+        <div>
+          <p>She has 8 potions</p> 
+          <p>
+            <span>Death</span>
+          </br> 
+            eliminates the target 
+          </p>
+          <p>
+            <span>Citizen-killer</span>
+            </br> 
+            by using this, God will choose a random citizen to eliminate
+          </p>
+          <p>
+            <span>Mafia-killer</span>
+            </br> 
+            by using this, God will choose a random mafia to eliminate
+          </p>
+          <p>
+            <span>Reveal</span>
+            </br> 
+            the target should reveal his/her role to all the players
+          </p>
+          <p>
+            <span>Sickening</span>
+            </br> 
+            the target will get sick with no signs and after 48 hours will be eliminated in the middle of the day (This sickness is not contagious)
+          </p>
+          <p>
+            <span>Craziness</span>
+            </br> 
+            by using this the target can't use his/her ability that night, but instead chooses a player and the chosen player will be eliminated, and the player is silenced for 24 hours
+          </p>
+          <p>
+            <span>Undying</span>
+            </br> 
+            she has two Undying potions, by using them she can't be eliminated, except by voting
+          </p>
         </div>
       </div>
       `,
