@@ -62,7 +62,6 @@ const GameSetup = (props) => {
       </div>
       
       <button onClick={() => dispatch("NAME_ENTER")}>{prompt_1}</button>
-      {/* <button onClick={() => dispatch("CHARACTERS_SELECT")}>{prompt_1}</button> */}
       
       {/* Modals */}
       <Modal

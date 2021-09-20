@@ -8,9 +8,16 @@ import NameEnterModal from "./NameEnterModal";
 import getLocalData from "../../services/getLocalData";
 import giveRoles from "../../services/shuffleRoles";
 
-const Modal = (props) => {
-  const { show, closeHandler, backHandler, changeModalHandler, type } = props;
-
+const Modal = ({
+  show,
+  closeHandler,
+  backHandler,
+  changeModalHandler,
+  type,
+  playerName,
+  playerRole,
+  history,
+}) => {
   const [remainingPlayers, setRemainingPlayers] = useState(0);
   const [remainingCharacters, setRemainingCharacters] = useState(0);
 
@@ -42,7 +49,7 @@ const Modal = (props) => {
       JSON.stringify(player_role_dictionary)
     );
 
-    props.history.push("/game-control");
+    history.push("/game-control");
   };
 
   return (
@@ -61,9 +68,9 @@ const Modal = (props) => {
                 {/*Modal Header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   <h3 className="text-3xl font-semibold">
-                    {type === "nameEnter"
-                      ? remainingPlayers
-                      : remainingCharacters}
+                    {type === "nameEnter" && remainingPlayers}
+                    {type === "charSelect" && remainingCharacters}
+                    {type === "showRole" && playerName}
                   </h3>
                   <button onClick={closeHandler}>
                     <span className=" text-red-600 font-bold  h-6 w-6 text-2xl block outline-none focus:outline-none">
@@ -75,13 +82,19 @@ const Modal = (props) => {
                 {/*Modal Body*/}
                 <div className="relative p-6 flex-auto">
                   {/* Modal Content */}
-                  {type === "nameEnter" ? (
+                  {type === "nameEnter" && (
                     <NameEnterModal
                       remaining={remainingPlayers}
                       setRemaining={setRemainingPlayers}
                     />
-                  ) : (
+                  )}
+                  {type === "charSelect" && (
                     <CharSelectModal setRemaining={setRemainingCharacters} />
+                  )}
+                  {type === "showRole" && (
+                    <>
+                      <h1>{playerRole}</h1>
+                    </>
                   )}
                 </div>
 
@@ -94,7 +107,7 @@ const Modal = (props) => {
                   >
                     Close
                   </button>
-                  {type === "nameEnter" ? (
+                  {type === "nameEnter" && (
                     <button
                       className="bg-green-400 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
@@ -102,7 +115,8 @@ const Modal = (props) => {
                     >
                       Go To Character Select
                     </button>
-                  ) : (
+                  )}
+                  {type === "charSelect" && (
                     <>
                       <button
                         className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
