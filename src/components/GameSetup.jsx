@@ -9,6 +9,9 @@ import { LanguageContext } from "../contexts/LanguageContextProvider";
 // Components
 import Modal from "./modals/Modal";
 
+// Styles
+import styles from "../styles/GameSetup.module.css";
+
 const initialState = {
   type: "",
   nameEnter: false,
@@ -55,14 +58,19 @@ const GameSetup = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <div>
-      <div>
+    <div className={styles.container}>
+      <div className={styles.headerContainer}>
         <h1>{title}</h1>
         <p>{description}</p>
       </div>
-      
-      <button onClick={() => dispatch("NAME_ENTER")}>{prompt_1}</button>
-      
+
+      <button
+        className={styles.startButton}
+        onClick={() => dispatch("NAME_ENTER")}
+      >
+        {prompt_1}
+      </button>
+
       {/* Modals */}
       <Modal
         type={state.type}

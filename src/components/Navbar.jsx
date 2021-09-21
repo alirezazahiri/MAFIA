@@ -27,7 +27,7 @@ const Navbar = () => {
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              <i className="fa fa-bars"></i>
+              <i className="fa fa-bars fa-lg"></i>
             </button>
           </div>
           <div

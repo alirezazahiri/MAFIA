@@ -1,0 +1,40 @@
+.container {
+    text-align: center;
+}
+
+.container .startButton {
+    color: rgb(80, 203, 147);
+    border: 1px solid rgba(71, 58, 121, 0.8);
+    padding: 20px 30px;
+
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(71, 58, 121, 0.8);
+    backdrop-filter: blur(15px);
+    background-color: rgba(71, 58, 121, 0.1);
+    transition: all 0.2s ease;
+}
+
+.container .startButton:hover {
+    border-radius: 12px;
+}
+
+.headerContainer {
+    margin: 120px 80px;
+}
+
+.headerContainer h1 {
+    color: rgb(71, 58, 121);
+
+    font-size: 45px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.headerContainer p {
+    color: #50cb93;
+
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+    margin-top: 25px;
+}

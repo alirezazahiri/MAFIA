@@ -10,6 +10,7 @@ import giveRoles from "../../services/shuffleRoles";
 
 // Style
 import tailwindStyles from "../../styles/tailwindClasses/Common";
+import styles from "../../styles/Modal.module.css";
 
 const Modal = ({
   show,
@@ -67,7 +68,9 @@ const Modal = ({
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*Major Modal Content*/}
-              <div className={tailwindStyles["modal-container"]}>
+              <div
+                className={tailwindStyles["modal-container"] + styles.container}
+              >
                 {/*Modal Header*/}
                 <div className={tailwindStyles["modal-header"]}>
                   <h3 className="text-3xl font-semibold">
@@ -109,6 +112,7 @@ const Modal = ({
                     Close
                   </button>
                   {type === "nameEnter" && (
+                    <>
                     <button
                       className={tailwindStyles["btn-success"]}
                       type="button"
@@ -116,6 +120,7 @@ const Modal = ({
                     >
                       Go To Character Select
                     </button>
+                    </>
                   )}
                   {type === "charSelect" && (
                     <>

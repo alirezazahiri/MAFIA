@@ -26,7 +26,8 @@ const Home = (props) => {
   useEffect(() => {
     const value = fixNumbers(playersCount);
     if (playersCount) {
-      if (/^\d+$/.test(value)) { // check if value is a numeric string
+      if (/^\d+$/.test(value)) {
+        // check if value is a numeric string
         if (Number(value) >= 4 && Number(value) <= 80) {
           setDisable(false);
         } else {
@@ -40,11 +41,12 @@ const Home = (props) => {
 
   const changeHandler = (e) => {
     const { value } = e.target;
-    const newValue = fixNumbers(value)
+    const newValue = fixNumbers(value);
     if (/^\d*$/.test(newValue)) setPlayersCount(newValue); // set newValue if it is a empty string or a number
   };
 
-  const clickHandler = () => {
+  const clickHandler = (e) => {
+    e.preventDefault()
     if (!disable) {
       localStorage.clear();
       localStorage.setItem("playersCount", playersCount);
@@ -73,6 +75,12 @@ const Home = (props) => {
           </button>
         </form>
       </div>
+      <p
+        style={{ color: "rgba(100, 100, 100, 0.5)" }}
+        className="animate-bounce"
+      >
+        All rights reserved by Alireza Zahiri&trade;
+      </p>
     </div>
   );
 };

@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(71, 58, 121, 0.5);   
+    margin: 5px 10px; 
+}
+
+.nameIndexContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nameIndexContainer span{
+    margin-right: 12px;
+}
+
+.nameIndexContainer span i {
+    font-size: 20px;
+    margin-top: 5px;
+    color: rgb(85, 75, 122);
+}
+
+.nameIndexContainer h1{
+    color: #50cb93;
+    font-size: 20px;
+}
