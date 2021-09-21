@@ -8,6 +8,9 @@ import NameEnterModal from "./NameEnterModal";
 import getLocalData from "../../services/getLocalData";
 import giveRoles from "../../services/shuffleRoles";
 
+// Style
+import tailwindStyles from "../../styles/tailwindClasses/Common";
+
 const Modal = ({
   show,
   closeHandler,
@@ -55,7 +58,7 @@ const Modal = ({
   return (
     <>
       {show ? (
-        <>
+        <div>
           <div
             className="fixed z-50 inset-0 overflow-y-auto"
             aria-labelledby="modal-title"
@@ -64,23 +67,21 @@ const Modal = ({
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*Major Modal Content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className={tailwindStyles["modal-container"]}>
                 {/*Modal Header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                <div className={tailwindStyles["modal-header"]}>
                   <h3 className="text-3xl font-semibold">
                     {type === "nameEnter" && remainingPlayers}
                     {type === "charSelect" && remainingCharacters}
                     {type === "showRole" && playerName}
                   </h3>
                   <button onClick={closeHandler}>
-                    <span className=" text-red-600 font-bold  h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      ×
-                    </span>
+                    <span className={tailwindStyles["x-btn"]}>×</span>
                   </button>
                 </div>
 
                 {/*Modal Body*/}
-                <div className="relative p-6 flex-auto">
+                <div className={tailwindStyles["modal-content"]}>
                   {/* Modal Content */}
                   {type === "nameEnter" && (
                     <NameEnterModal
@@ -99,9 +100,9 @@ const Modal = ({
                 </div>
 
                 {/*Modal Footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                <div className={tailwindStyles["modal-footer"]}>
                   <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className={tailwindStyles["btn-danger"]}
                     type="button"
                     onClick={closeHandler}
                   >
@@ -109,7 +110,7 @@ const Modal = ({
                   </button>
                   {type === "nameEnter" && (
                     <button
-                      className="bg-green-400 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className={tailwindStyles["btn-success"]}
                       type="button"
                       onClick={changeModalHandler}
                     >
@@ -119,14 +120,14 @@ const Modal = ({
                   {type === "charSelect" && (
                     <>
                       <button
-                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        className={tailwindStyles["btn-danger"]}
                         type="button"
                         onClick={backHandler}
                       >
                         back to Name Enter
                       </button>
                       <button
-                        className="bg-green-400 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        className={tailwindStyles["btn-success"]}
                         type="button"
                         onClick={startGameHandler}
                         disabled={remainingCharacters !== 0}
@@ -139,8 +140,7 @@ const Modal = ({
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
+        </div>
       ) : null}
     </>
   );

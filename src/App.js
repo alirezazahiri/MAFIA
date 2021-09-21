@@ -11,6 +11,7 @@ import PlayerButtons from "./components/PlayerButtons";
 import Scenarios from './components/Scenarios';
 import Navbar from "./components/Navbar";
 import GodVision from './components/GodVision';
+import Bg from './components/background/Bg';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/game-setup" component={GameSetup} />
           <Route path="/" component={Home} exact />
         </Switch>
+        <Bg />
       </RolesContextProvider>
     </LanguageContextProvider>
   );
