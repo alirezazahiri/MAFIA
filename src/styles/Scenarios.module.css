@@ -1,7 +1,7 @@
 .container {}
 
 .filterContainer {
-    margin: 30px;
+    margin: 100px 30px 30px;
 }
 
 .filterContainer input {

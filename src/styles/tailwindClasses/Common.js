@@ -23,7 +23,7 @@ const tailwindStyles = {
     " fa fa-edit fa-2x text-gray-600 hover:text-purple-900 cursor-pointer ",
 
   "update-button":
-    " fixed z-50 bottom-4 right-4 rounded-full block lg:hidden w-24 h-24 ",
+    " fixed z-50 bottom-4 right-4 rounded-full block w-24 h-24 ",
 };
 
 export default tailwindStyles;
