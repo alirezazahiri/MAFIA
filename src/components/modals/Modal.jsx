@@ -11,6 +11,7 @@ import giveRoles from "../../services/shuffleRoles";
 // Style
 import tailwindStyles from "../../styles/tailwindClasses/Common";
 import styles from "../../styles/Modal.module.css";
+import ScenarioCard from '../common/ScenarioCard';
 
 const Modal = ({
   show,
@@ -19,7 +20,7 @@ const Modal = ({
   changeModalHandler,
   type,
   playerName,
-  playerRole,
+  character,
   history,
 }) => {
   const [remainingPlayers, setRemainingPlayers] = useState(0);
@@ -84,7 +85,7 @@ const Modal = ({
                 </div>
 
                 {/*Modal Body*/}
-                <div className={tailwindStyles["modal-content"]}>
+                <div className={tailwindStyles["modal-content"]} style={{ margin: type === "showRole" ? "50px 0" : ""}}>
                   {/* Modal Content */}
                   {type === "nameEnter" && (
                     <NameEnterModal
@@ -96,9 +97,7 @@ const Modal = ({
                     <CharSelectModal setRemaining={setRemainingCharacters} />
                   )}
                   {type === "showRole" && (
-                    <>
-                      <h1>{playerRole}</h1>
-                    </>
+                    <ScenarioCard character={character} />
                   )}
                 </div>
 

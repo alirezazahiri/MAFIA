@@ -38,7 +38,6 @@ const CharSelectModal = ({ setRemaining }) => {
   return (
     <div>
       <FilterCharacters setType={setType} />
-      {console.log(type)}
       {characters
         .filter((character) =>
           type === "all" ? true : character.type === type
@@ -63,7 +62,7 @@ const CharSelectModal = ({ setRemaining }) => {
       >
         reset
       </button>
-      <ToastContainer theme="dark" />
+      <ToastContainer autoClose={1000} theme="dark" limit={1} newestOnTop />
     </div>
   );
 };

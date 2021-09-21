@@ -30,3 +30,41 @@
     color: #50cb93;
     font-size: 20px;
 }
+
+.formContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.formContainer input {
+    font-size: 18px;
+    color: #50cb93;
+    margin-right: 5px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.formContainer input:focus {
+    outline: none;
+    border: 1px solid rgb(85, 75, 122);
+    box-shadow: 0 0 12px rgb(85, 75, 122);
+}
+
+.formContainer button {
+    color: #50cb93;
+    transition: all 0.2s;
+}
+
+.formContainer button:hover {
+    color: rgb(92, 53, 150);
+}
+
+@media only screen and (max-width: 600px) {
+    .formContainer {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+  }

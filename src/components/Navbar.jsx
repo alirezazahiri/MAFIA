@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { LanguageContext } from "../contexts/LanguageContextProvider";
 import { getNavbar } from "../services/getData";
 
+// Styles
+import styles from "../styles/Navbar.module.css";
+
 const Navbar = () => {
   const { language } = useContext(LanguageContext);
   const { title, senarios, players, gods_room, game_setup } =
@@ -13,7 +16,12 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-black mb-3">
+      <nav
+        className={
+          styles.container +
+          " flex flex-wrap items-center justify-between px-2 py-3 bg-black mb-3"
+        }
+      >
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link
@@ -49,17 +57,17 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  to="/god-vision"
+                  to="/players-roles"
                 >
-                  {gods_room}
+                  {players}
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  to="/players-roles"
+                  to="/god-vision"
                 >
-                  {players}
+                  {gods_room}
                 </Link>
               </li>
               <li className="nav-item">

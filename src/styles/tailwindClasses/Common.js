@@ -7,7 +7,7 @@ const tailwindStyles = {
   "btn-danger":
     " text-red-500 active:text-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg hover:text-red-700 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 ",
   "x-btn":
-    " text-red-600 font-bold  h-6 w-6 text-2xl block outline-none focus:outline-none ",
+    " text-red-600 font-bold  h-6 w-6 text-2xl block float-right outline-none focus:outline-none ",
 
   // Modal
   "modal-container":
@@ -21,6 +21,9 @@ const tailwindStyles = {
   // Icon
   "edit-icon":
     " fa fa-edit fa-2x text-gray-600 hover:text-purple-900 cursor-pointer ",
+
+  "update-button":
+    " fixed z-50 bottom-4 right-4 rounded-full block lg:hidden w-24 h-24 ",
 };
 
 export default tailwindStyles;

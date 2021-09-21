@@ -10,6 +10,9 @@ import ManagePlayerCard from "./common/ManagePlayerCard";
 // Contexts
 import { RolesContext } from "../contexts/RolesContextProvider";
 
+// Styles 
+import styles from "../styles/GodVision.module.css"
+
 const GodVision = () => {
   const { names, characters } = useContext(RolesContext);
 
@@ -31,9 +34,9 @@ const GodVision = () => {
   };
 
   return (
-    <div>
-      <div>
-        <input type="text" value={search} onChange={changeHandler} />
+    <div className={styles.container}>
+      <div className={styles.searchContainer}>
+        <input placeholder="Search..." type="text" value={search} onChange={changeHandler} />
       </div>
       {players
         .filter((player) => {
@@ -49,6 +52,7 @@ const GodVision = () => {
               player={player}
               role={characters[idx].title}
               icon={characters[idx].icon}
+              type={characters[idx].type}
             />
           );
         })}

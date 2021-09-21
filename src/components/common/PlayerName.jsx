@@ -51,7 +51,7 @@ const PlayerName = ({ name, index, setPlayers, players }) => {
           <i className="fa fa-user"></i>
         </span>
         {canEdit ? (
-          <form onSubmit={submitHandler}>
+          <form onSubmit={submitHandler} className={styles.formContainer}>
             <input
               ref={inputRef}
               type="text"

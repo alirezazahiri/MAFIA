@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 
 // Services
 import getLocalData from "../../services/getLocalData";
+import getColor from "../../services/getColor";
 
-const ManagePlayerCard = ({ player, icon, role }) => {
+// Styles
+import styles from "../../styles/ManagePlayerCard.module.css";
+
+const ManagePlayerCard = ({ player, icon, role, type }) => {
   const players_data = JSON.parse(getLocalData("players_data"));
   const [data, setData] = useState("");
 
@@ -16,18 +20,26 @@ const ManagePlayerCard = ({ player, icon, role }) => {
   };
 
   useEffect(() => {
-    setData(players_data[player])
-  }, [player, players_data])
+    setData(players_data[player]);
+  }, [player, players_data]);
+
+  const color = getColor(type);
 
   return (
-    <div>
-      <div>
+    <div
+      className={styles.container}
+      style={{
+        border: `1px solid ${color}`,
+        boxShadow: `0 0 12px ${color}`,
+      }}
+    >
+      <div className={styles.hedearContainer} style={{ color: color }}>
         <h2>{player}</h2>
         <i className={icon}></i>
         <h2>{role}</h2>
       </div>
       <div>
-        <input type="text" value={data} onChange={changeHandler} />
+        <textarea type="text" value={data} onChange={changeHandler} style={{ color: color }} />
       </div>
     </div>
   );

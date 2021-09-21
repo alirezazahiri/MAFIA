@@ -96,7 +96,7 @@ const CharacterButton = ({
         <p>{title}</p>
       </button>
       <button onClick={decreaseHandler} style={buttonStyle}>
-        decrease
+        -
       </button>
     </div>
   );

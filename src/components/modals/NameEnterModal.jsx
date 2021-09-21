@@ -26,12 +26,19 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
 
   const clickHandler = (e) => {
     e.preventDefault();
+    const checkedName =
+      name.trim() === ""
+        ? `Unknown ${Number(getLocalData("playersCount")) - remaining + 1}`
+        : name;
+    console.log(checkedName);
     if (
-      !players.find(
-        (player) => player.trim().toLowerCase() === name.trim().toLowerCase()
-      )
+      players.findIndex(
+        (player) =>
+          player.trim().toLowerCase() === checkedName.trim().toLowerCase()
+      ) === -1 &&
+      remaining !== 0
     ) {
-      const newPlayers = [...players, name.trim()];
+      const newPlayers = [...players, checkedName.trim()];
       setPlayers(newPlayers);
       const remaining =
         Number(getLocalData("playersCount")) - newPlayers.length;
@@ -54,7 +61,7 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
       <div className={styles.namesContainer}>
         {players.map((player, index) => (
           <PlayerName
-            key={player}
+            key={`${player}${index}`}
             name={player}
             index={index}
             setPlayers={setPlayers}
@@ -79,7 +86,9 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
         </button>
       </form>
       <button
-        className={"border border-yellow-600 mt-5" + tailwindStyles["btn-warning"]}
+        className={
+          "border border-yellow-600 mt-5" + tailwindStyles["btn-warning"]
+        }
         type="button"
         onClick={playersResetHandler}
       >

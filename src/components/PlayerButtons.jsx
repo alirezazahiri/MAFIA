@@ -6,15 +6,19 @@ import PlayerButton from "./common/PlayerButton";
 // Services
 import getLocalData from "../services/getLocalData";
 import giveRoles from "../services/shuffleRoles";
-import make from '../services/makePlayersDataDicttionary';
+import make from "../services/makePlayersDataDicttionary";
 
 // Toast
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+//Styles
+import styles from "../styles/PlayerButtons.module.css";
+import tailwindStyles from "../styles/tailwindClasses/Common";
+
 const PlayerButtons = () => {
   const players = JSON.parse(getLocalData("players"));
-  const charactersInGame = JSON.parse(getLocalData("charactersInGame"))
+  const charactersInGame = JSON.parse(getLocalData("charactersInGame"));
 
   const [playersRole, setPlayersRole] = useState({});
 
@@ -23,10 +27,7 @@ const PlayerButtons = () => {
   }, []);
 
   const updateHandler = () => {
-    const player_role_dictionary = giveRoles(
-      players,
-      charactersInGame
-    );
+    const player_role_dictionary = giveRoles(players, charactersInGame);
 
     localStorage.setItem(
       "player_role_dictionary",
@@ -44,17 +45,22 @@ const PlayerButtons = () => {
       draggable: true,
       progress: undefined,
     });
-
-    make(players)
+    localStorage.removeItem("players_data")
+    make(players);
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {players.map((player) => (
         <PlayerButton key={player} player={player} playersRole={playersRole} />
       ))}
-      <button onClick={updateHandler}>بروزرسانی</button>
-      <ToastContainer theme="dark" />
+      <button
+        onClick={updateHandler}
+        className={tailwindStyles["update-button"] + styles.updateButton}
+      >
+        بروزرسانی
+      </button>
+      <ToastContainer autoClose={1000} theme="dark" limit={1} newestOnTop />
     </div>
   );
 };

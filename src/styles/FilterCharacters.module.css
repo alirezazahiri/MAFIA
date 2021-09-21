@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container button {
+    backdrop-filter: blur(20px);
+}
+
+@media only screen and (max-width: 600px) {
+    .container button{
+        font-size: 8px;
+    }
+}
