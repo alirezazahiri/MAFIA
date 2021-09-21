@@ -73,7 +73,7 @@ const Modal = ({
               >
                 {/*Modal Header*/}
                 <div className={tailwindStyles["modal-header"]}>
-                  <h3 className="text-3xl font-semibold">
+                  <h3 className="text-3xl font-semibold text-purple-400">
                     {type === "nameEnter" && remainingPlayers}
                     {type === "charSelect" && remainingCharacters}
                     {type === "showRole" && playerName}
@@ -117,6 +117,7 @@ const Modal = ({
                       className={tailwindStyles["btn-success"]}
                       type="button"
                       onClick={changeModalHandler}
+                      disabled={remainingPlayers}
                     >
                       Go To Character Select
                     </button>

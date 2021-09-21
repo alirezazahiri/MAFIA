@@ -4,11 +4,15 @@ import React, { useState, useEffect } from "react";
 import getColor from "../../services/getColor";
 import getLocalData from "../../services/getLocalData";
 
+// Styles
+import styles from "../../styles/CharacterButton.module.css";
+
 const CharacterButton = ({
   character,
   setRemaining,
   names,
   charactersInGame,
+  resetClicked,
   setCharactersInGame,
 }) => {
   const { id, icon, title, type, max } = character;
@@ -19,13 +23,13 @@ const CharacterButton = ({
       ? JSON.parse(getLocalData("charactersInGame"))
       : [];
     setCharactersInGame(characters);
-
-    const characterCount = countCharacter(names[id - 1]);
-    setCount(characterCount);
   }, [id, names, setCharactersInGame]);
 
   const increaseHandler = () => {
-    if (count + 1 <= max && (Number(getLocalData("playersCount")) - charactersInGame.length) > 0) {
+    if (
+      count + 1 <= max &&
+      Number(getLocalData("playersCount")) - charactersInGame.length > 0
+    ) {
       setCount((prevCount) => prevCount + 1);
 
       const characterToAdd = names[id - 1];
@@ -38,13 +42,6 @@ const CharacterButton = ({
         return newCharacters;
       });
     }
-  };
-
-  const countCharacter = (name) => {
-    const characters = getLocalData("charactersInGame")
-      ? JSON.parse(getLocalData("charactersInGame"))
-      : [];
-    return characters.filter((character) => character === name).length;
   };
 
   const decreaseHandler = () => {
@@ -66,32 +63,39 @@ const CharacterButton = ({
     }
   };
 
+  // need to change
+  useEffect(() => {
+    const countCharacter = (name) => {
+      const characters = charactersInGame;
+      return characters.filter((character) => character === name).length;
+    };
+
+    setCount(countCharacter(names[id - 1]));
+  }, [charactersInGame, resetClicked, id, names]);
+
   const color = getColor(type);
+  const buttonStyle = {
+    border: `1px solid ${color}`,
+    boxShadow: `0 0 12px ${color}`,
+  };
+
+  const showInfoHandler = () => {
+    console.log(character);
+  };
 
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        color: color,
-      }}
+      className={styles.container}
+      style={{ color: color, borderBottom: `1px solid ${color}` }}
     >
-      <button
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-        onClick={increaseHandler}
-      >
+      <button onClick={increaseHandler} style={buttonStyle}>
+        <span>{count > 0 ? count : "+"}</span>
+      </button>
+      <button onClick={showInfoHandler} style={buttonStyle}>
         <i className={icon}></i>
-        <span>{count > 0 && count}</span>
         <p>{title}</p>
       </button>
-      <button
-        onClick={decreaseHandler}
-      >
+      <button onClick={decreaseHandler} style={buttonStyle}>
         decrease
       </button>
     </div>
