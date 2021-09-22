@@ -1,7 +1,62 @@
+.container,
+.content {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    font-family: 'Cairo', sans-serif;
+}
+
 .container {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    z-index: 1;
+    padding: 10px;
+}
+
+.content button {
+    border: none;
+    box-shadow: none;
+    transition: all 0.2s;
+    display: fixed;
+}
+
+.content button:focus,
+.content button:hover {
+    box-shadow: 0 0 20px rgb(71, 58, 121);
+}
+
+.title {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    transition: all 0.2s;
+    color: #50cb93;
+}
+
+.container {
+    backdrop-filter: blur(30px);
+    box-shadow: 10px 0 20px rgb(71, 58, 121);
+}
+
+.linksContainer {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.linksContainer a {
+    text-decoration: none;
+    float: right;
+    color: #50cb93;
+    transition: all 0.2s ease-in-out;
+    margin: 5px;
+    font-size: 16px;
+}
+
+.linksContainer a:hover {
+    color: rgb(71, 58, 121);
+    text-decoration: underline;
+    text-underline-position: under;
+    text-underline-offset: 5px;
+
+}
+
+.title:hover{
+    color: rgb(71, 58, 121);
 }

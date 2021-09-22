@@ -58,6 +58,15 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
 
   return (
     <div className={styles.container}>
+      <button
+        className={
+          "border border-yellow-600" + tailwindStyles["btn-warning"]
+        }
+        type="button"
+        onClick={playersResetHandler}
+      >
+        reset
+      </button>
       <div className={styles.namesContainer}>
         {players.map((player, index) => (
           <PlayerName
@@ -87,7 +96,7 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
       </form>
       <button
         className={
-          "border border-yellow-600 mt-5" + tailwindStyles["btn-warning"]
+          "border border-yellow-600 mt-3" + tailwindStyles["btn-warning"]
         }
         type="button"
         onClick={playersResetHandler}

@@ -7,7 +7,7 @@ import { getGameSetup } from "../services/getData";
 import { LanguageContext } from "../contexts/LanguageContextProvider";
 
 // Components
-import Modal from "./modals/Modal";
+import ModalAlt from './modals/ModalAlt';
 
 // Styles
 import styles from "../styles/GameSetup.module.css";
@@ -72,13 +72,13 @@ const GameSetup = (props) => {
       </button>
 
       {/* Modals */}
-      <Modal
+      <ModalAlt
         type={state.type}
         show={state.nameEnter}
         changeModalHandler={() => dispatch("CHARACTERS_SELECT")}
         closeHandler={() => dispatch("CLOSE_NAME_MODAL")}
       />
-      <Modal
+      <ModalAlt
         type={state.type}
         show={state.charSelect}
         backHandler={() => dispatch("NAME_ENTER")}

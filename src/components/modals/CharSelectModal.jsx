@@ -13,6 +13,9 @@ import FilterCharacters from "../common/FilterCharacters";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Styles 
+import styles from "../../styles/CharSelectModal.module.css"
+
 const CharSelectModal = ({ setRemaining }) => {
   const { characters, names } = useContext(RolesContext);
   const [charactersInGame, setCharactersInGame] = useState([]);
@@ -36,8 +39,17 @@ const CharSelectModal = ({ setRemaining }) => {
     setRemaining(Number(getLocalData("playersCount")));
   };
   return (
-    <div>
+    <div className={styles.container}>
       <FilterCharacters setType={setType} />
+      <button
+        className={
+          "border border-yellow-600 mt-3" + tailwindStyles["btn-warning"]
+        }
+        type="button"
+        onClick={charactersResetHandler}
+      >
+        reset
+      </button>
       {characters
         .filter((character) =>
           type === "all" ? true : character.type === type
@@ -55,7 +67,7 @@ const CharSelectModal = ({ setRemaining }) => {
         ))}
       <button
         className={
-          "border border-yellow-600 mt-5" + tailwindStyles["btn-warning"]
+          "border border-yellow-600 mt-3" + tailwindStyles["btn-warning"]
         }
         type="button"
         onClick={charactersResetHandler}

@@ -3,10 +3,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-family: 'Cairo', sans-serif;
 }
 
 .container button {
     backdrop-filter: blur(20px);
+    font-size: 12px;
 }
 
 @media only screen and (max-width: 600px) {

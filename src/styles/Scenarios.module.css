@@ -1,7 +1,6 @@
-.container {}
-
 .filterContainer {
-    margin: 100px 30px 30px;
+    margin: 50px 30px 30px;
+    font-family: 'Cairo', sans-serif;
 }
 
 .filterContainer input {

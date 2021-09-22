@@ -89,14 +89,14 @@ const CharacterButton = ({
       style={{ color: color, borderBottom: `1px solid ${color}` }}
     >
       <button onClick={increaseHandler} style={buttonStyle}>
-        <span>{count > 0 ? count : "+"}</span>
+        <span>{count > 0 ? count : <i className="fa fa-plus"></i>}</span>
       </button>
       <button onClick={showInfoHandler} style={buttonStyle}>
         <i className={icon}></i>
         <p>{title}</p>
       </button>
       <button onClick={decreaseHandler} style={buttonStyle}>
-        -
+      <i className="fa fa-minus"></i>
       </button>
     </div>
   );

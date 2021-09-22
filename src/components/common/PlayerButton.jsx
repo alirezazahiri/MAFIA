@@ -1,13 +1,14 @@
 import React, { useState, useContext } from "react";
 
 // Modal
-import Modal from "../modals/Modal";
+// import {ModalAlt as Modal} from "../modals/ModalAlt";
 
 // Contexts
 import { RolesContext } from "../../contexts/RolesContextProvider";
 
 // Styles
 import styles from "../../styles/PlayerButton.module.css"
+import ModalAlt from '../modals/ModalAlt';
 
 const PlayerButton = ({ player, playersRole }) => {
   const [showModal, setShowModal] = useState(false);
@@ -26,7 +27,7 @@ const PlayerButton = ({ player, playersRole }) => {
   return (
     <div className={styles.container}>
       <button onClick={showHandler}>{player}</button>
-      <Modal
+      <ModalAlt
         type="showRole"
         show={showModal}
         playerName={player}

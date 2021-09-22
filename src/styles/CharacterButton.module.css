@@ -12,6 +12,7 @@
     width: 30%;
     align-items: center;
     transition: all 0.2s;
+    font-family: 'Cairo', sans-serif;
 }
 
 .container button:hover {

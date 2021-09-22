@@ -1,6 +1,11 @@
-.container {}
+.container {
+    text-align: center;
+    font-family: 'Cairo', sans-serif;
+}
 
-.namesContainer {}
+.namesContainer {
+    margin-top: 20px;
+}
 
 .formContainer {
     position: sticky;
@@ -26,6 +31,9 @@
 
 .formContainer input {
     box-sizing: border-box;
+    background:rgba(255, 255, 255, 0.2);
+    color: #50cb93;
+    font-size: 18px;
 }
 
 .formContainer input:focus {

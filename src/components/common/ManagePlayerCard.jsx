@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 // Services
 import getLocalData from "../../services/getLocalData";
@@ -8,20 +8,18 @@ import getColor from "../../services/getColor";
 import styles from "../../styles/ManagePlayerCard.module.css";
 
 const ManagePlayerCard = ({ player, icon, role, type }) => {
-  const players_data = JSON.parse(getLocalData("players_data"));
-  const [data, setData] = useState("");
+  const [data, setData] = useState(
+    JSON.parse(getLocalData("players_data"))[player]
+  );
 
   const changeHandler = (e) => {
     const { value } = e.target;
     setData(value);
-
-    players_data[player] = value;
+    let players_data = JSON.parse(getLocalData("players_data"));
+    let current_player_status = value;
+    players_data[player] = current_player_status;
     localStorage.setItem("players_data", JSON.stringify(players_data));
   };
-
-  useEffect(() => {
-    setData(players_data[player]);
-  }, [player, players_data]);
 
   const color = getColor(type);
 
@@ -39,7 +37,12 @@ const ManagePlayerCard = ({ player, icon, role, type }) => {
         <h2>{role}</h2>
       </div>
       <div>
-        <textarea type="text" value={data} onChange={changeHandler} style={{ color: color }} />
+        <textarea
+          type="text"
+          value={data}
+          onChange={changeHandler}
+          style={{ color: color }}
+        />
       </div>
     </div>
   );

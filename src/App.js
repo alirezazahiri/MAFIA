@@ -9,15 +9,15 @@ import Home from "./components/Home";
 import GameSetup from "./components/GameSetup";
 import PlayerButtons from "./components/PlayerButtons";
 import Scenarios from './components/Scenarios';
-import Navbar from "./components/Navbar";
 import GodVision from './components/GodVision';
 import Bg from './components/background/Bg';
+import NavBar from './components/NavBar';
 
 const App = () => {
   return (
     <LanguageContextProvider>
       <RolesContextProvider>
-        <Navbar />
+        <NavBar />
         <Switch>
           <Route path="/god-vision" component={GodVision} />
           <Route path="/scenarios" component={Scenarios} />

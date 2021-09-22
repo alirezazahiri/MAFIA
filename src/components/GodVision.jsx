@@ -46,6 +46,7 @@ const GodVision = () => {
         })
         .map((player) => {
           const idx = names.indexOf(playersRoles[player]);
+          console.log(playersRoles[player])
           return (
             <ManagePlayerCard
               key={player}

@@ -2,9 +2,9 @@
     text-align: center;
     margin: 25px;
     padding: 20px;
-    /* background-color: ; */
     border-radius: 12px;
     backdrop-filter: blur(20px);
+    font-family: 'Cairo', sans-serif;
 }
 
 .container textarea{
