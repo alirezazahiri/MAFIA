@@ -20,7 +20,7 @@ const CharacterButton = ({
 
   useEffect(() => {
     const characters = getLocalData("charactersInGame")
-      ? JSON.parse(getLocalData("charactersInGame"))
+      ? getLocalData("charactersInGame")
       : [];
     setCharactersInGame(characters);
   }, [id, names, setCharactersInGame]);

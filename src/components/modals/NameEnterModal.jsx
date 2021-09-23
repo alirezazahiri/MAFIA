@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 // Services
 import getLocalData from "../../services/getLocalData";
 
-// Contexts 
+// Contexts
 import { LanguageContext } from "../../contexts/LanguageContextProvider";
 
 // Styles
@@ -12,18 +12,18 @@ import tailwindStyles from "../../styles/tailwindClasses/Common";
 
 // Components
 import PlayerName from "../common/PlayerName";
-import { getNameEnter } from '../../services/getData';
+import { getNameEnter } from "../../services/getData";
 
 const NameEnterModal = ({ remaining, setRemaining }) => {
   const [name, setName] = useState("");
   const [players, setPlayers] = useState([]);
-  const {language} = useContext(LanguageContext)
-  const {buttons, unknown} = getNameEnter(language)
+  const { language } = useContext(LanguageContext);
+  const { buttons, unknown } = getNameEnter(language);
   const inputRef = useRef();
 
   useEffect(() => {
     const check = getLocalData("players");
-    const localPlayers = !check ? undefined : JSON.parse(check);
+    const localPlayers = !check ? undefined : check;
     setPlayers(localPlayers ? localPlayers : []);
     const remaining = Number(getLocalData("playersCount")) - players.length;
     setRemaining(remaining);
@@ -35,7 +35,6 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
       name.trim() === ""
         ? `${unknown} ${Number(getLocalData("playersCount")) - remaining + 1}`
         : name;
-    console.log(checkedName);
     if (
       players.findIndex(
         (player) =>
@@ -54,6 +53,7 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
 
   useEffect(() => {
     inputRef.current.select();
+    inputRef.current.focus();
   }, [players]);
 
   const playersResetHandler = () => {
@@ -64,24 +64,23 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
   return (
     <div className={styles.container}>
       <button
-        className={
-          "border border-yellow-600" + tailwindStyles["btn-warning"]
-        }
+        className={"border border-yellow-600" + tailwindStyles["btn-warning"]}
         type="button"
         onClick={playersResetHandler}
       >
         {buttons.reset}
       </button>
       <div className={styles.namesContainer}>
-        {players.map((player, index) => (
-          <PlayerName
-            key={`${player}${index}`}
-            name={player}
-            index={index}
-            setPlayers={setPlayers}
-            players={players}
-          />
-        ))}
+        {players &&
+          players.map((player, index) => (
+            <PlayerName
+              key={`${player}${index}`}
+              name={player}
+              index={index}
+              setPlayers={setPlayers}
+              players={players}
+            />
+          ))}
       </div>
       <form onSubmit={clickHandler} className={styles.formContainer}>
         <input

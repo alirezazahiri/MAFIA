@@ -16,15 +16,28 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/PlayerButtons.module.css";
 import tailwindStyles from "../styles/tailwindClasses/Common";
 
-const PlayerButtons = () => {
-  const players = JSON.parse(getLocalData("players"));
-  const charactersInGame = JSON.parse(getLocalData("charactersInGame"));
+const PlayerButtons = (props) => {
+  const players = getLocalData("players");
+  const charactersInGame = getLocalData("charactersInGame");
 
   const [playersRole, setPlayersRole] = useState({});
 
   useEffect(() => {
-    setPlayersRole(JSON.parse(getLocalData("player_role_dictionary")));
-  }, []);
+    const playersCount = getLocalData("playersCount");
+    const playersList = getLocalData("players");
+    const charactersList = getLocalData("charactersInGame");
+
+    if (!playersCount) {
+      props.history.push("/");
+    } else if (
+      !(playersList && playersList.length === playersCount) ||
+      !(charactersList && charactersList.length === playersCount)
+    ) {
+      props.history.push("/game-setup");
+    } else {
+      setPlayersRole(getLocalData("player_role_dictionary"));
+    }
+  }, [props.history]);
 
   const updateHandler = () => {
     const player_role_dictionary = giveRoles(players, charactersInGame);
@@ -45,13 +58,13 @@ const PlayerButtons = () => {
       draggable: true,
       progress: undefined,
     });
-    localStorage.removeItem("players_data")
+    localStorage.removeItem("players_data");
     make(players);
   };
 
   return (
     <div className={styles.container}>
-      {players.map((player) => (
+      {players && players.map((player) => (
         <PlayerButton key={player} player={player} playersRole={playersRole} />
       ))}
       <button

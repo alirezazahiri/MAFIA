@@ -8,14 +8,15 @@ import getColor from "../../services/getColor";
 import styles from "../../styles/ManagePlayerCard.module.css";
 
 const ManagePlayerCard = ({ player, icon, role, type }) => {
-  const [data, setData] = useState(
-    JSON.parse(getLocalData("players_data"))[player]
-  );
+  const playerData = getLocalData("players_data")
+    ? getLocalData("players_data")[player]
+    : undefined;
+  const [data, setData] = useState(playerData ? playerData : "");
 
   const changeHandler = (e) => {
     const { value } = e.target;
     setData(value);
-    let players_data = JSON.parse(getLocalData("players_data"));
+    let players_data = getLocalData("players_data");
     let current_player_status = value;
     players_data[player] = current_player_status;
     localStorage.setItem("players_data", JSON.stringify(players_data));

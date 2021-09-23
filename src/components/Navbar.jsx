@@ -38,7 +38,7 @@ const NavBar = () => {
         <img
           onClick={toggleLangHandler}
           src={language === "persian" ? iran_flag : uk_flag}
-          style={{ width: "45px" }}
+          style={{ width: "45px", cursor: "pointer" }}
           alt="IR"
         />
         <div>

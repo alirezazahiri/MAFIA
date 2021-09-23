@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 
 // Services
 import { getGameSetup } from "../services/getData";
@@ -11,6 +11,7 @@ import ModalAlt from './modals/ModalAlt';
 
 // Styles
 import styles from "../styles/GameSetup.module.css";
+import getLocalData from '../services/getLocalData';
 
 const initialState = {
   type: "",
@@ -56,6 +57,12 @@ const GameSetup = (props) => {
   const { title, description, prompt_1 } = getGameSetup(language);
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    if(!getLocalData("playersCount")) {
+      props.history.push("/")
+    }
+  }, [props.history])
 
   return (
     <div className={styles.container}>

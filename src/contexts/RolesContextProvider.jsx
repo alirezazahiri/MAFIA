@@ -8,7 +8,6 @@ export const RolesContext = createContext();
 
 const RolesContextProvider = ({ children }) => {
   const { language } = useContext(LanguageContext);
-  console.log(language)
   const { characters, names } = getRoles(language);
 
   return (

@@ -34,11 +34,9 @@ const ModalAlt = ({
   useEffect(() => {
     const playersCount = getLocalData("playersCount");
 
-    const players = getLocalData("players")
-      ? JSON.parse(getLocalData("players"))
-      : 0;
+    const players = getLocalData("players") ? getLocalData("players") : 0;
     const charactersInGame = getLocalData("charactersInGame")
-      ? JSON.parse(getLocalData("charactersInGame"))
+      ? getLocalData("charactersInGame")
       : 0;
 
     const playersLength = players ? players.length : 0;
@@ -50,8 +48,8 @@ const ModalAlt = ({
 
   const startGameHandler = () => {
     const player_role_dictionary = giveRoles(
-      JSON.parse(getLocalData("players")),
-      JSON.parse(getLocalData("charactersInGame"))
+      getLocalData("players"),
+      getLocalData("charactersInGame")
     );
 
     localStorage.setItem(
