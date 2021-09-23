@@ -11,7 +11,7 @@ import PlayerButtons from "./components/PlayerButtons";
 import Scenarios from './components/Scenarios';
 import GodVision from './components/GodVision';
 import Bg from './components/background/Bg';
-import NavBar from './components/NavBar';
+import NavBar from './components/Navbar';
 
 const App = () => {
   return (
