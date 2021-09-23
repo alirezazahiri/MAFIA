@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 // Components
 import PlayerButton from "./common/PlayerButton";
+
+// Contexts
+import { LanguageContext } from "../contexts/LanguageContextProvider";
 
 // Services
 import getLocalData from "../services/getLocalData";
 import giveRoles from "../services/shuffleRoles";
 import make from "../services/makePlayersDataDicttionary";
+import { getPlayerButtons } from "../services/getData";
 
 // Toast
 import { ToastContainer, toast } from "react-toastify";
@@ -21,6 +25,9 @@ const PlayerButtons = (props) => {
   const charactersInGame = getLocalData("charactersInGame");
 
   const [playersRole, setPlayersRole] = useState({});
+
+  const { language } = useContext(LanguageContext);
+  const { buttons, update_message } = getPlayerButtons(language);
 
   useEffect(() => {
     const playersCount = getLocalData("playersCount");
@@ -49,31 +56,28 @@ const PlayerButtons = (props) => {
 
     setPlayersRole(player_role_dictionary);
 
-    toast.success("Roles Updated Successfully", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    toast.success(update_message);
     localStorage.removeItem("players_data");
     make(players);
   };
 
   return (
     <div className={styles.container}>
-      {players && players.map((player) => (
-        <PlayerButton key={player} player={player} playersRole={playersRole} />
-      ))}
+      {players &&
+        players.map((player) => (
+          <PlayerButton
+            key={player}
+            player={player}
+            playersRole={playersRole}
+          />
+        ))}
       <button
         onClick={updateHandler}
         className={tailwindStyles["update-button"] + styles.updateButton}
       >
-        بروزرسانی
+        {buttons.update}
       </button>
-      <ToastContainer autoClose={1000} theme="dark" limit={1} newestOnTop />
+      <ToastContainer autoClose={1500} theme="dark" newestOnTop />
     </div>
   );
 };

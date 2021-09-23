@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 
 // Contexts
 import { RolesContext } from "../contexts/RolesContextProvider";
+import { LanguageContext } from "../contexts/LanguageContextProvider";
 import ScenarioCard from "./common/ScenarioCard";
 
 // Styles
@@ -12,6 +13,8 @@ const Scenarios = () => {
   const { characters, names } = useContext(RolesContext);
   const [search, setSearch] = useState("");
   const [type, setType] = useState("all");
+
+  const { language } = useContext(LanguageContext);
 
   const changeHandler = (e) => {
     const { value } = e.target;
@@ -25,7 +28,7 @@ const Scenarios = () => {
           type="text"
           value={search}
           onChange={changeHandler}
-          placeholder="Search..."
+          placeholder={language === "persian" ? "...جستجو کن" : "Search..."}
         />
         <FilterCharacters setType={setType} />
       </div>

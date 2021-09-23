@@ -1,5 +1,7 @@
 const buttons = {
-    reset: "بازنشانی",
-}
+  reset: "بازنشانی",
+};
 
-export const char_select_objects_fa = {buttons}
+const reset_message = "کاراکتر های انتخاب شده با موفقیت بازنشانی شد";
+
+export const char_select_objects_fa = { buttons, reset_message };

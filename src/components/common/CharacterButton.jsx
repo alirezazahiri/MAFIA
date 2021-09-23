@@ -6,6 +6,7 @@ import getLocalData from "../../services/getLocalData";
 
 // Styles
 import styles from "../../styles/CharacterButton.module.css";
+import ModalAlt from '../modals/ModalAlt';
 
 const CharacterButton = ({
   character,
@@ -17,6 +18,7 @@ const CharacterButton = ({
 }) => {
   const { id, icon, title, type, max } = character;
   const [count, setCount] = useState(0);
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
     const characters = getLocalData("charactersInGame")
@@ -80,8 +82,12 @@ const CharacterButton = ({
   };
 
   const showInfoHandler = () => {
-    console.log(character);
+    setShow(true)
   };
+
+  const closeHandler = () => {
+    setShow(false)
+  }
 
   return (
     <div
@@ -98,6 +104,12 @@ const CharacterButton = ({
       <button onClick={decreaseHandler} style={buttonStyle}>
       <i className="fa fa-minus"></i>
       </button>
+      <ModalAlt 
+        type="charInfo"
+        show={show}
+        character={character}
+        closeHandler={closeHandler}
+      />
     </div>
   );
 };

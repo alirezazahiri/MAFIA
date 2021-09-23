@@ -9,12 +9,14 @@ import ManagePlayerCard from "./common/ManagePlayerCard";
 
 // Contexts
 import { RolesContext } from "../contexts/RolesContextProvider";
+import { LanguageContext } from "../contexts/LanguageContextProvider";
 
 // Styles
 import styles from "../styles/GodVision.module.css";
 
 const GodVision = (props) => {
   const { names, characters } = useContext(RolesContext);
+  const {language} = useContext(LanguageContext)
 
   const [search, setSearch] = useState("");
 
@@ -50,7 +52,7 @@ const GodVision = (props) => {
     <div className={styles.container}>
       <div className={styles.searchContainer}>
         <input
-          placeholder="Search..."
+          placeholder={language === "persian" ? "...جستجو کن" : "Search..."}
           type="text"
           value={search}
           onChange={changeHandler}

@@ -29,6 +29,10 @@ import { name_enter_objects_fa } from "../translations/NameEnter/NameEnter-fa";
 import { filter_characters_objects_en } from "../translations/FilterCharacters/FilterCharacters-en";
 import { filter_characters_objects_fa } from "../translations/FilterCharacters/FilterCharacters-fa";
 
+// PlayerButtons
+import { player_buttons_objects_en } from "../translations/PlayerButtons/PlayerButtons-en";
+import { player_buttons_objects_fa } from "../translations/PlayerButtons/PlayerButtons-fa";
+
 const getRoles = (language) => {
   return language === "english" ? chars_en : chars_fa;
 };
@@ -65,6 +69,12 @@ const getFilterCharacters = (language) => {
     : filter_characters_objects_fa;
 };
 
+const getPlayerButtons = (language) => {
+  return language === "english"
+    ? player_buttons_objects_en
+    : player_buttons_objects_fa;
+};
+
 export {
   getRoles as default,
   getHome,
@@ -74,4 +84,5 @@ export {
   getCharSelect,
   getNameEnter,
   getFilterCharacters,
+  getPlayerButtons,
 };

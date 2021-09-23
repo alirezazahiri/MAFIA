@@ -24,19 +24,11 @@ const CharSelectModal = ({ setRemaining }) => {
   const [resetClicked, setResetClicked] = useState(false);
   const [type, setType] = useState("all");
   const {language} = useContext(LanguageContext)
-  const {buttons} = getCharSelect(language)
+  const {buttons, reset_message} = getCharSelect(language)
 
   const charactersResetHandler = () => {
     setResetClicked((prevStatus) => !prevStatus);
-    toast.success("Characters Resetted Successfully", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    toast.success(reset_message);
 
     setCharactersInGame([]);
     localStorage.setItem("charactersInGame", JSON.stringify([]));
@@ -78,7 +70,7 @@ const CharSelectModal = ({ setRemaining }) => {
       >
         {buttons.reset}
       </button>
-      <ToastContainer autoClose={1000} theme="dark" limit={1} newestOnTop />
+      <ToastContainer autoClose={1500} theme="dark" newestOnTop />
     </div>
   );
 };

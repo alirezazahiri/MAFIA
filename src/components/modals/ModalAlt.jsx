@@ -63,7 +63,12 @@ const ModalAlt = ({
   const { buttons } = getModal(language);
 
   return (
-    <Modal show={show} onHide={closeHandler} className={styles.container}>
+    <Modal
+      show={show}
+      onHide={closeHandler}
+      className={styles.container}
+      centered={type === "charInfo"}
+    >
       <Modal.Header className={styles.headerContainer + " text-red-700"}>
         <Modal.Title>
           {type === "nameEnter" && remainingPlayers}
@@ -119,7 +124,9 @@ const ModalAlt = ({
         {type === "charSelect" && (
           <CharSelectModal setRemaining={setRemainingCharacters} />
         )}
-        {type === "showRole" && <ScenarioCard character={character} />}
+        {(type === "showRole" || type === "charInfo") && (
+          <ScenarioCard character={character} />
+        )}
       </Modal.Body>
       <Modal.Footer className={styles.footerContainer}>
         <div>

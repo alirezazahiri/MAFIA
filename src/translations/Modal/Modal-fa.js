@@ -1,6 +1,6 @@
 const buttons = {
   close: "بستن",
-  back_to_name_enter: "برگشت به نام ها",
+  back_to_name_enter: "برگرد",
   start: "شروع بازی",
   go_to_char_select: "برو به انتخاب کاراکتر",
 };
