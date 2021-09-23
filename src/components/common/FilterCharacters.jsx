@@ -1,8 +1,12 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import getColor from "../../services/getColor";
 
 // Styles
 import styles from "../../styles/FilterCharacters.module.css";
+
+// Contexts
+import { LanguageContext } from "../../contexts/LanguageContextProvider";
+import { getFilterCharacters } from "../../services/getData";
 
 const initialState = {
   mafia: false,
@@ -13,7 +17,6 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  console.log(action)
   switch (action) {
     case "mafia":
       return { ...initialState, mafia: true };
@@ -37,6 +40,9 @@ const FilterCharacters = ({ setType }) => {
 
   const [hover, dispatch] = useReducer(reducer, initialState);
 
+  const { language } = useContext(LanguageContext);
+  const { filters } = getFilterCharacters(language);
+
   const getStyles = (type) => {
     return {
       color: getColor(type),
@@ -45,7 +51,7 @@ const FilterCharacters = ({ setType }) => {
       padding: "1px 5px",
       width: "18%",
       height: "80px",
-      transition: "all 0.2s"
+      transition: "all 0.2s",
     };
   };
 
@@ -57,7 +63,7 @@ const FilterCharacters = ({ setType }) => {
         style={getStyles("mafia")}
         onMouseOver={() => dispatch("mafia")}
       >
-        Mafias
+        {filters.mafia_side}
       </button>
       <button
         onClick={clickHandler}
@@ -65,7 +71,7 @@ const FilterCharacters = ({ setType }) => {
         style={getStyles("citizen")}
         onMouseOver={() => dispatch("citizen")}
       >
-        Citizens
+        {filters.citizen_side}
       </button>
       <button
         onClick={clickHandler}
@@ -73,7 +79,7 @@ const FilterCharacters = ({ setType }) => {
         style={getStyles("all")}
         onMouseOver={() => dispatch("all")}
       >
-        All
+        {filters.all}
       </button>
       <button
         onClick={clickHandler}
@@ -81,7 +87,7 @@ const FilterCharacters = ({ setType }) => {
         style={getStyles("mid-independent")}
         onMouseOver={() => dispatch("mid-independent")}
       >
-        Mid Independents
+        {filters.mid_independent_side}
       </button>
       <button
         onClick={clickHandler}
@@ -89,7 +95,7 @@ const FilterCharacters = ({ setType }) => {
         style={getStyles("independent")}
         onMouseOver={() => dispatch("independent")}
       >
-        Independents
+        {filters.independent_side}
       </button>
     </div>
   );

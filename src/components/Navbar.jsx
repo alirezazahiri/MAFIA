@@ -11,10 +11,20 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 
+// Images
+import iran_flag from "../styles/img/iran-flag-round-icon-64.png";
+import uk_flag from "../styles/img/uk-flag-round-icon-64.png";
+
 const NavBar = () => {
-  const { language } = useContext(LanguageContext);
+  const { language, setLanguage } = useContext(LanguageContext);
   const { title, senarios, players, gods_room, game_setup } =
     getNavbar(language);
+  const toggleLangHandler = () => {
+    setLanguage((prevLang) => {
+      const currentLang = prevLang === "english" ? "persian" : "english";
+      return currentLang;
+    });
+  };
 
   return (
     <Navbar
@@ -25,6 +35,12 @@ const NavBar = () => {
     >
       <Container className={styles.content}>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <img
+          onClick={toggleLangHandler}
+          src={language === "persian" ? iran_flag : uk_flag}
+          style={{ width: "45px" }}
+          alt="IR"
+        />
         <div>
           <Link className={styles.title} to="/">
             {title}

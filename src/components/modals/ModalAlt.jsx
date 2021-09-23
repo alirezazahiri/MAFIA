@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import CharSelectModal from "./CharSelectModal";
+
+// Contexts
+import { LanguageContext } from "../../contexts/LanguageContextProvider";
 
 // Components
 import NameEnterModal from "./NameEnterModal";
@@ -13,6 +16,7 @@ import tailwindStyles from "../../styles/tailwindClasses/Common";
 import styles from "../../styles/Modal.module.css";
 import Modal from "react-bootstrap/Modal";
 import ScenarioCard from "../common/ScenarioCard";
+import { getModal } from "../../services/getData";
 
 const ModalAlt = ({
   show,
@@ -26,7 +30,7 @@ const ModalAlt = ({
 }) => {
   const [remainingPlayers, setRemainingPlayers] = useState(0);
   const [remainingCharacters, setRemainingCharacters] = useState(0);
-
+  const { language } = useContext(LanguageContext);
   useEffect(() => {
     const playersCount = getLocalData("playersCount");
 
@@ -58,6 +62,8 @@ const ModalAlt = ({
     history.push("/players-roles");
   };
 
+  const { buttons } = getModal(language);
+
   return (
     <Modal show={show} onHide={closeHandler} className={styles.container}>
       <Modal.Header className={styles.headerContainer + " text-red-700"}>
@@ -72,7 +78,7 @@ const ModalAlt = ({
             type="button"
             onClick={closeHandler}
           >
-            Close
+            {buttons.close}
           </button>
           {type === "charSelect" && (
             <>
@@ -81,7 +87,7 @@ const ModalAlt = ({
                 type="button"
                 onClick={backHandler}
               >
-                back to Name Enter
+                {buttons.back_to_name_enter}
               </button>
               <button
                 className={tailwindStyles["btn-success"]}
@@ -89,7 +95,7 @@ const ModalAlt = ({
                 onClick={startGameHandler}
                 disabled={remainingCharacters !== 0}
               >
-                Start Game
+                {buttons.start}
               </button>
             </>
           )}
@@ -100,7 +106,7 @@ const ModalAlt = ({
               onClick={changeModalHandler}
               disabled={remainingPlayers}
             >
-              Go To Character Select
+              {buttons.go_to_char_select}
             </button>
           )}
         </div>
@@ -124,7 +130,7 @@ const ModalAlt = ({
             type="button"
             onClick={closeHandler}
           >
-            Close
+            {buttons.close}
           </button>
           {type === "nameEnter" && (
             <>
@@ -134,7 +140,7 @@ const ModalAlt = ({
                 onClick={changeModalHandler}
                 disabled={remainingPlayers}
               >
-                Go To Character Select
+                {buttons.go_to_char_select}
               </button>
             </>
           )}
@@ -145,7 +151,7 @@ const ModalAlt = ({
                 type="button"
                 onClick={backHandler}
               >
-                back to Name Enter
+                {buttons.back_to_name_enter}
               </button>
               <button
                 className={tailwindStyles["btn-success"]}
@@ -153,7 +159,7 @@ const ModalAlt = ({
                 onClick={startGameHandler}
                 disabled={remainingCharacters !== 0}
               >
-                Start Game
+                {buttons.start}
               </button>
             </>
           )}

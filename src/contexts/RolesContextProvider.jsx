@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useContext } from "react";
 
 // Services
 import getRoles from "../services/getData";
@@ -8,11 +8,11 @@ export const RolesContext = createContext();
 
 const RolesContextProvider = ({ children }) => {
   const { language } = useContext(LanguageContext);
-  const [roles, setRoles] = useState(getRoles(language));
-  const { characters, names } = roles;
+  console.log(language)
+  const { characters, names } = getRoles(language);
 
   return (
-    <RolesContext.Provider value={{ characters, names, setRoles }}>
+    <RolesContext.Provider value={{ characters, names }}>
       {children}
     </RolesContext.Provider>
   );

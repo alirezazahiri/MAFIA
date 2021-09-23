@@ -1,7 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 
 // Services
 import getLocalData from "../../services/getLocalData";
+
+// Contexts 
+import { LanguageContext } from "../../contexts/LanguageContextProvider";
 
 // Styles
 import styles from "../../styles/NameEnterModal.module.css";
@@ -9,11 +12,13 @@ import tailwindStyles from "../../styles/tailwindClasses/Common";
 
 // Components
 import PlayerName from "../common/PlayerName";
+import { getNameEnter } from '../../services/getData';
 
 const NameEnterModal = ({ remaining, setRemaining }) => {
   const [name, setName] = useState("");
   const [players, setPlayers] = useState([]);
-
+  const {language} = useContext(LanguageContext)
+  const {buttons, unknown} = getNameEnter(language)
   const inputRef = useRef();
 
   useEffect(() => {
@@ -28,7 +33,7 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
     e.preventDefault();
     const checkedName =
       name.trim() === ""
-        ? `Unknown ${Number(getLocalData("playersCount")) - remaining + 1}`
+        ? `${unknown} ${Number(getLocalData("playersCount")) - remaining + 1}`
         : name;
     console.log(checkedName);
     if (
@@ -65,7 +70,7 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
         type="button"
         onClick={playersResetHandler}
       >
-        reset
+        {buttons.reset}
       </button>
       <div className={styles.namesContainer}>
         {players.map((player, index) => (
@@ -91,7 +96,7 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
           onClick={clickHandler}
           disabled={remaining === 0}
         >
-          Add
+          {buttons.add}
         </button>
       </form>
       <button
@@ -101,7 +106,7 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
         type="button"
         onClick={playersResetHandler}
       >
-        reset
+        {buttons.reset}
       </button>
     </div>
   );

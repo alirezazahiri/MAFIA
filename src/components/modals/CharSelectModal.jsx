@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 
 // Contexts
 import { RolesContext } from "../../contexts/RolesContextProvider";
+import { LanguageContext } from "../../contexts/LanguageContextProvider";
 
 // Components
 import CharacterButton from "../common/CharacterButton";
@@ -15,12 +16,15 @@ import "react-toastify/dist/ReactToastify.css";
 
 // Styles 
 import styles from "../../styles/CharSelectModal.module.css"
+import { getCharSelect } from '../../services/getData';
 
 const CharSelectModal = ({ setRemaining }) => {
   const { characters, names } = useContext(RolesContext);
   const [charactersInGame, setCharactersInGame] = useState([]);
   const [resetClicked, setResetClicked] = useState(false);
   const [type, setType] = useState("all");
+  const {language} = useContext(LanguageContext)
+  const {buttons} = getCharSelect(language)
 
   const charactersResetHandler = () => {
     setResetClicked((prevStatus) => !prevStatus);
@@ -48,7 +52,7 @@ const CharSelectModal = ({ setRemaining }) => {
         type="button"
         onClick={charactersResetHandler}
       >
-        reset
+        {buttons.reset}
       </button>
       {characters
         .filter((character) =>
@@ -72,7 +76,7 @@ const CharSelectModal = ({ setRemaining }) => {
         type="button"
         onClick={charactersResetHandler}
       >
-        reset
+        {buttons.reset}
       </button>
       <ToastContainer autoClose={1000} theme="dark" limit={1} newestOnTop />
     </div>
