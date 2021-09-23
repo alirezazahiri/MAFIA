@@ -6,7 +6,7 @@ import { LanguageContext } from "../contexts/LanguageContextProvider";
 import { getNavbar } from "../services/getData";
 
 // Styles
-import styles from "../styles/NavBar.module.css";
+import styles from "../styles/Navbar.module.css";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
