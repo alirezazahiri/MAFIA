@@ -13,6 +13,7 @@ import { LanguageContext } from "../contexts/LanguageContextProvider";
 
 // Styles
 import styles from "../styles/GodVision.module.css";
+import DayNightRadio from "./common/DayNightRadio";
 
 const GodVision = (props) => {
   const { names, characters } = useContext(RolesContext);
@@ -58,6 +59,7 @@ const GodVision = (props) => {
           onChange={changeHandler}
         />
       </div>
+      <DayNightRadio />
       {players &&
         playersRoles &&
         Object.keys(playersRoles).length === getLocalData("playersCount") &&
