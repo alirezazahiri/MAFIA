@@ -6,6 +6,7 @@ import getColor from "../../services/getColor";
 
 // Styles
 import styles from "../../styles/ManagePlayerCard.module.css";
+import tailwindStyles from "../../styles/tailwindClasses/Common";
 
 const ManagePlayerCard = ({ player, icon, role, type }) => {
   const playerData = getLocalData("players_data")
@@ -20,6 +21,11 @@ const ManagePlayerCard = ({ player, icon, role, type }) => {
     let current_player_status = value;
     players_data[player] = current_player_status;
     localStorage.setItem("players_data", JSON.stringify(players_data));
+  };
+
+  const clearText = () => {
+    setData("");
+    changeHandler({ target: { value: "" } });
   };
 
   const color = getColor(type);
@@ -37,13 +43,16 @@ const ManagePlayerCard = ({ player, icon, role, type }) => {
         <i className={icon}></i>
         <h2>{role}</h2>
       </div>
-      <div>
+      <div className={styles.playerStatusContainer}>
         <textarea
           type="text"
           value={data}
           onChange={changeHandler}
           style={{ color: color }}
         />
+        <button className={tailwindStyles["btn-danger"]} onClick={clearText}>
+          <i className="fa fa-undo fa-lg"></i>
+        </button>
       </div>
     </div>
   );

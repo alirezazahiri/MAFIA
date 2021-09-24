@@ -37,3 +37,7 @@
         5px 0 5px 0 #66de94;
     border-radius: 12px;
 }
+
+.filterContainer {
+    margin: 30px;
+}

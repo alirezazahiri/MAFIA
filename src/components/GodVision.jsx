@@ -14,15 +14,18 @@ import { LanguageContext } from "../contexts/LanguageContextProvider";
 // Styles
 import styles from "../styles/GodVision.module.css";
 import DayNightRadio from "./common/DayNightRadio";
+import FilterCharacters from "./common/FilterCharacters";
 
 const GodVision = (props) => {
   const { names, characters } = useContext(RolesContext);
-  const {language} = useContext(LanguageContext)
+  const { language } = useContext(LanguageContext);
 
   const [search, setSearch] = useState("");
 
   const players = getLocalData("players");
   const playersRoles = getLocalData("player_role_dictionary");
+
+  const [type, setType] = useState("all");
 
   useEffect(() => {
     const playersCount = getLocalData("playersCount");
@@ -37,10 +40,7 @@ const GodVision = (props) => {
     ) {
       props.history.push("/game-setup");
     } else {
-      const data = getLocalData("players_data");
-      if (!data) {
-        make(players);
-      }
+      make(players);
     }
   }, [players, props.history]);
 
@@ -60,10 +60,17 @@ const GodVision = (props) => {
         />
       </div>
       <DayNightRadio />
+      <div className={styles.filterContainer}>
+        <FilterCharacters setType={setType} />
+      </div>
       {players &&
         playersRoles &&
         Object.keys(playersRoles).length === getLocalData("playersCount") &&
         players
+          .filter((player) => {
+            const idx = names.indexOf(playersRoles[player]);
+            return type === "all" ? true : characters[idx].type === type;
+          })
           .filter((player) => {
             const idx = names.indexOf(playersRoles[player]);
             return (
