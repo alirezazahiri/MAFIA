@@ -36,6 +36,7 @@ const NavBar = () => {
       <Container className={styles.content}>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <img
+        title={language === "persian" ? "تغییر زبان" : "Change Language"}
           onClick={toggleLangHandler}
           src={language === "persian" ? iran_flag : uk_flag}
           style={{ width: "45px", cursor: "pointer" }}

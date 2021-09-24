@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Switch from "react-switch";
 
 // Thumbnails
 import nightSong from "../../styles/thumbnails/night.mp3";
 
 const DayNightRadio = () => {
-  const [audio, setAudio] = useState(null);
-  const [night, setNight] = useState(false);
+  const song = new Audio(nightSong)
+  song.load();
 
-  useEffect(() => {
-    setAudio(new Audio(nightSong));
-  }, []);
+  const [audio, setAudio] = useState(song);
+  const [night, setNight] = useState(false);
 
   const changeHandler = () => {
     let night;
@@ -22,7 +21,7 @@ const DayNightRadio = () => {
       audio.play();
     } else {
       audio.pause();
-      setAudio(new Audio(nightSong))
+      setAudio(song);
     }
   };
 

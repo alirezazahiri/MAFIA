@@ -86,7 +86,7 @@ const ModalAlt = ({
           {type === "charSelect" && (
             <>
               <button
-                className={tailwindStyles["btn-danger"]}
+                className={tailwindStyles["btn-warning"]}
                 type="button"
                 onClick={backHandler}
               >
@@ -152,7 +152,7 @@ const ModalAlt = ({
           {type === "charSelect" && (
             <>
               <button
-                className={tailwindStyles["btn-danger"]}
+                className={tailwindStyles["btn-warning"]}
                 type="button"
                 onClick={backHandler}
               >

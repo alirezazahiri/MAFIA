@@ -20,7 +20,6 @@ const Home = (props) => {
 
   useEffect(() => {
     inputRef.current.focus();
-    inputRef.current.select();
   }, []);
 
   useEffect(() => {
