@@ -551,7 +551,7 @@ const mid_independents = [
     type: "mid-independent",
   },
   {
-    id: 52,
+    id: 53,
     icon: "fa fa-question",
     title: "Unknown",
     description:
@@ -560,7 +560,7 @@ const mid_independents = [
     type: "mid-independent",
   },
   {
-    id: 52,
+    id: 54,
     icon: "fa fa-slideshare",
     title: "Twin",
     description:
@@ -569,7 +569,7 @@ const mid_independents = [
     type: "mid-independent",
   },
   {
-    id: 52,
+    id: 55,
     icon: "fa fa-snowflake-o",
     title: "Sick",
     description:
@@ -578,7 +578,7 @@ const mid_independents = [
     type: "mid-independent",
   },
   {
-    id: 52,
+    id: 56,
     icon: "fa fa-gratipay",
     title: "Dearest",
     description:
