@@ -4,7 +4,9 @@ const tailwindStyles = {
     " text-green-400 active:text-green-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg hover:text-green-700 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 ",
   "btn-warning":
     " text-yellow-400 active:text-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg hover:text-yellow-700 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 ",
-  "btn-danger":
+  "btn-reset":
+    " text-indigo-400 active:text-indigo-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg hover:text-indigo-700 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 ",
+    "btn-danger":
     " text-red-500 active:text-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg hover:text-red-700 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 ",
   "x-btn":
     " text-red-600 font-bold  h-6 w-6 text-2xl block float-right outline-none focus:outline-none ",

@@ -51,7 +51,7 @@ const ManagePlayerCard = ({ player, icon, role, type }) => {
           style={{ color: color }}
         />
         <button className={tailwindStyles["btn-danger"]} onClick={clearText}>
-          <i className="fa fa-undo fa-lg"></i>
+          <i className="fa fa-minus-circle fa-lg fa-lg"></i>
         </button>
       </div>
     </div>

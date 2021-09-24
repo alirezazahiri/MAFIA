@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     font-family: 'Cairo', sans-serif;
+    margin-bottom: 15px;
 }
 
 .container button {

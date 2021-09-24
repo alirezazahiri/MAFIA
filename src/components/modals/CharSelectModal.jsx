@@ -36,16 +36,17 @@ const CharSelectModal = ({ setRemaining }) => {
   };
   return (
     <div className={styles.container}>
-      <FilterCharacters setType={setType} />
       <button
         className={
-          "border border-yellow-600 mt-3" + tailwindStyles["btn-warning"]
+          tailwindStyles["btn-reset"] + " mb-3"
         }
         type="button"
         onClick={charactersResetHandler}
       >
         {buttons.reset}
       </button>
+      <FilterCharacters setType={setType}/>
+      
       {characters
         .filter((character) =>
           type === "all" ? true : character.type === type
@@ -61,15 +62,6 @@ const CharSelectModal = ({ setRemaining }) => {
             resetClicked={resetClicked}
           />
         ))}
-      <button
-        className={
-          "border border-yellow-600 mt-3" + tailwindStyles["btn-warning"]
-        }
-        type="button"
-        onClick={charactersResetHandler}
-      >
-        {buttons.reset}
-      </button>
       <ToastContainer autoClose={1500} theme="dark" newestOnTop />
     </div>
   );

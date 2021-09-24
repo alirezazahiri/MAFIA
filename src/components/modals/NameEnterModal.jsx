@@ -64,24 +64,12 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
   return (
     <div className={styles.container}>
       <button
-        className={"border border-yellow-600" + tailwindStyles["btn-warning"]}
+        className={tailwindStyles["btn-reset"]}
         type="button"
         onClick={playersResetHandler}
       >
         {buttons.reset}
       </button>
-      <div className={styles.namesContainer}>
-        {players &&
-          players.map((player, index) => (
-            <PlayerName
-              key={`${player}${index}`}
-              name={player}
-              index={index}
-              setPlayers={setPlayers}
-              players={players}
-            />
-          ))}
-      </div>
       <form onSubmit={clickHandler} className={styles.formContainer}>
         <input
           ref={inputRef}
@@ -98,15 +86,18 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
           {buttons.add}
         </button>
       </form>
-      <button
-        className={
-          "border border-yellow-600 mt-3" + tailwindStyles["btn-warning"]
-        }
-        type="button"
-        onClick={playersResetHandler}
-      >
-        {buttons.reset}
-      </button>
+      <div className={styles.namesContainer}>
+        {players &&
+          players.map((player, index) => (
+            <PlayerName
+              key={`${player}${index}`}
+              name={player}
+              index={index}
+              setPlayers={setPlayers}
+              players={players}
+            />
+          ))}
+      </div>
     </div>
   );
 };

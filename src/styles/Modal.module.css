@@ -3,7 +3,8 @@
 }
 
 .container div{
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(40px);
 }
 
 .container div {
@@ -14,7 +15,6 @@
     color: #50cb93;
 }
 
-
 .headerContainer {
-    
+    border: none;
 }

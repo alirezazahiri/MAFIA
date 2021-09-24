@@ -13,7 +13,7 @@ import { LanguageContext } from "../contexts/LanguageContextProvider";
 const Home = (props) => {
   const { language } = useContext(LanguageContext);
   const { title, description, placeholder_1, start } = getHome(language);
-  const [playersCount, setPlayersCount] = useState(0);
+  const [playersCount, setPlayersCount] = useState("");
   const [disable, setDisable] = useState(false);
 
   const inputRef = useRef();

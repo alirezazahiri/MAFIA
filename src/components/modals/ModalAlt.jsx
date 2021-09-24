@@ -67,7 +67,6 @@ const ModalAlt = ({
       show={show}
       onHide={closeHandler}
       className={styles.container}
-      centered={type === "charInfo"}
     >
       <Modal.Header className={styles.headerContainer + " text-red-700"}>
         <Modal.Title>
@@ -128,48 +127,6 @@ const ModalAlt = ({
           <ScenarioCard character={character} />
         )}
       </Modal.Body>
-      <Modal.Footer className={styles.footerContainer}>
-        <div>
-          <button
-            className={tailwindStyles["btn-danger"]}
-            type="button"
-            onClick={closeHandler}
-          >
-            {buttons.close}
-          </button>
-          {type === "nameEnter" && (
-            <>
-              <button
-                className={tailwindStyles["btn-success"]}
-                type="button"
-                onClick={changeModalHandler}
-                disabled={remainingPlayers}
-              >
-                {buttons.go_to_char_select}
-              </button>
-            </>
-          )}
-          {type === "charSelect" && (
-            <>
-              <button
-                className={tailwindStyles["btn-warning"]}
-                type="button"
-                onClick={backHandler}
-              >
-                {buttons.back_to_name_enter}
-              </button>
-              <button
-                className={tailwindStyles["btn-success"]}
-                type="button"
-                onClick={startGameHandler}
-                disabled={remainingCharacters !== 0}
-              >
-                {buttons.start}
-              </button>
-            </>
-          )}
-        </div>
-      </Modal.Footer>
     </Modal>
   );
 };
