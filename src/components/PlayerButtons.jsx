@@ -22,8 +22,6 @@ import tailwindStyles from "../styles/tailwindClasses/Common";
 
 const PlayerButtons = (props) => {
   const players = getLocalData("players");
-  const charactersInGame = getLocalData("charactersInGame");
-
   const [playersRole, setPlayersRole] = useState({});
 
   const { language } = useContext(LanguageContext);
@@ -47,14 +45,16 @@ const PlayerButtons = (props) => {
       else {
         localStorage.setItem(
           "player_role_dictionary",
-          JSON.stringify(giveRoles(players, charactersInGame))
+          JSON.stringify(giveRoles(playersList, charactersList))
         );
       }
     }
-  }, [props.history, players, charactersInGame]);
+  }, [props.history]);
 
   const updateHandler = () => {
-    const player_role_dictionary = giveRoles(players, charactersInGame);
+    const playersList = getLocalData("players");
+    const charactersList = getLocalData("charactersInGame");
+    const player_role_dictionary = giveRoles(playersList, charactersList)
 
     localStorage.setItem(
       "player_role_dictionary",
@@ -65,7 +65,7 @@ const PlayerButtons = (props) => {
 
     toast.success(update_message);
     localStorage.removeItem("players_data");
-    make(players);
+    make(playersList);
   };
 
   return (
