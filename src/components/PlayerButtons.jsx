@@ -51,7 +51,7 @@ const PlayerButtons = (props) => {
         );
       }
     }
-  }, [props.history]);
+  }, [props.history, players, charactersInGame]);
 
   const updateHandler = () => {
     const player_role_dictionary = giveRoles(players, charactersInGame);
