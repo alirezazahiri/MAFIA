@@ -42,7 +42,14 @@ const PlayerButtons = (props) => {
     ) {
       props.history.push("/game-setup");
     } else {
-      setPlayersRole(getLocalData("player_role_dictionary"));
+      const player_role_dictionary = getLocalData("player_role_dictionary");
+      if (player_role_dictionary) setPlayersRole(player_role_dictionary);
+      else {
+        localStorage.setItem(
+          "player_role_dictionary",
+          JSON.stringify(giveRoles(players, charactersInGame))
+        );
+      }
     }
   }, [props.history]);
 

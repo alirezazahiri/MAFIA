@@ -3,11 +3,12 @@ import React, { useEffect, useState, useRef } from "react";
 // Styles
 import styles from "../../styles/PlayerName.module.css";
 import tailwindStyles from "../../styles/tailwindClasses/Common";
+import getLocalData from "../../services/getLocalData";
 
 const PlayerName = ({ name, index, setPlayers, players }) => {
   const [canEdit, setCanEdit] = useState(false);
   const [newName, setNewName] = useState(name);
-  const [currentName, setCurrentName] = useState(name)
+  const [currentName, setCurrentName] = useState(name);
 
   const inputRef = useRef();
 
@@ -30,16 +31,33 @@ const PlayerName = ({ name, index, setPlayers, players }) => {
         (player) => player.trim().toLowerCase() === newName.trim().toLowerCase()
       )
     ) {
-      console.log(
-        !players.find(
-          (player) =>
-            player.trim().toLowerCase() === newName.trim().toLowerCase()
-        )
-      );
-      setCurrentName(newName)
+      let playersRolesDict = getLocalData("player_role_dictionary");
+      // Player Role is given to the new player replaced with it 
+      const currentRole = playersRolesDict[players[index]];
+      delete playersRolesDict[players[index]];
+      const newKey = newName;
+      playersRolesDict[newKey] = currentRole;
+
+      // Player Data is given to the new player replaced with it 
+      let playersData = getLocalData("players_data");
+      if (playersData) {
+        const currentData = playersData[players[index]];
+        delete playersData[players[index]];
+        playersData[newKey] = currentData;
+        localStorage.setItem(
+          "players_data",
+          JSON.stringify(playersData)
+        );
+      }
+
+      setCurrentName(newName);
       newPlayers[index] = newName;
       setPlayers(newPlayers);
       localStorage.setItem("players", JSON.stringify(newPlayers));
+      localStorage.setItem(
+        "player_role_dictionary",
+        JSON.stringify(playersRolesDict)
+      );
       setCanEdit(false);
     }
   };

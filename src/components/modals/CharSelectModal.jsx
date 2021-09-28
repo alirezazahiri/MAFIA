@@ -33,6 +33,9 @@ const CharSelectModal = ({ setRemaining }) => {
     setCharactersInGame([]);
     localStorage.setItem("charactersInGame", JSON.stringify([]));
     setRemaining(Number(getLocalData("playersCount")));
+    localStorage.removeItem("player_role_dictionary");
+    localStorage.removeItem("players_data");
+    localStorage.removeItem("dead_or_alive_dict");
   };
   return (
     <div className={styles.container}>

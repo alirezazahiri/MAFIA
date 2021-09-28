@@ -52,13 +52,17 @@ const NameEnterModal = ({ remaining, setRemaining }) => {
   };
 
   useEffect(() => {
-    inputRef.current.select();
+    inputRef.current.value = ""
     inputRef.current.focus();
   }, [players]);
 
   const playersResetHandler = () => {
     setPlayers([]);
     localStorage.setItem("players", JSON.stringify([]));
+    localStorage.setItem("charactersInGame", JSON.stringify([]));
+    localStorage.removeItem("player_role_dictionary");
+    localStorage.removeItem("players_data");
+    localStorage.removeItem("dead_or_alive_dict");
   };
 
   return (

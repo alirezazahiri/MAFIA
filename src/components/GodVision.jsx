@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 //Services
 import getLocalData from "../services/getLocalData";
 import make from "../services/makePlayersDataDicttionary";
+import giveRoles from '../services/shuffleRoles';
 
 // Components
 import ManagePlayerCard from "./common/ManagePlayerCard";
@@ -31,7 +32,13 @@ const GodVision = (props) => {
     const playersCount = getLocalData("playersCount");
     const playersList = getLocalData("players");
     const charactersList = getLocalData("charactersInGame");
-
+    const player_role_dictionary = getLocalData("player_role_dictionary");
+    if (!player_role_dictionary) {
+      localStorage.setItem(
+        "player_role_dictionary",
+        JSON.stringify(giveRoles(playersList, charactersList))
+      );
+    }
     if (!playersCount) {
       props.history.push("/");
     } else if (
