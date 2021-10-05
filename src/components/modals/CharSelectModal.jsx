@@ -29,7 +29,6 @@ const CharSelectModal = ({ setRemaining }) => {
   const charactersResetHandler = () => {
     setResetClicked((prevStatus) => !prevStatus);
     toast.success(reset_message);
-
     setCharactersInGame([]);
     localStorage.setItem("charactersInGame", JSON.stringify([]));
     setRemaining(Number(getLocalData("playersCount")));
@@ -37,6 +36,7 @@ const CharSelectModal = ({ setRemaining }) => {
     localStorage.removeItem("players_data");
     localStorage.removeItem("dead_or_alive_dict");
   };
+  
   return (
     <div className={styles.container}>
       <button

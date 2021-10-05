@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 //Services
 import getLocalData from "../services/getLocalData";
 import make from "../services/makePlayersDataDicttionary";
-import giveRoles from '../services/shuffleRoles';
+import giveRoles from "../services/shuffleRoles";
 
 // Components
 import ManagePlayerCard from "./common/ManagePlayerCard";
@@ -24,7 +24,11 @@ const GodVision = (props) => {
   const [search, setSearch] = useState("");
 
   const players = getLocalData("players");
-  const playersRoles = getLocalData("player_role_dictionary");
+  // const playersRoles = getLocalData("player_role_dictionary");
+
+  // const [players, setPlayers] = useState([]);
+  const [playersRoles, setPlayersRoles] = useState([]);
+  console.log(playersRoles)
 
   const [type, setType] = useState("all");
 
@@ -33,12 +37,7 @@ const GodVision = (props) => {
     const playersList = getLocalData("players");
     const charactersList = getLocalData("charactersInGame");
     const player_role_dictionary = getLocalData("player_role_dictionary");
-    if (!player_role_dictionary) {
-      localStorage.setItem(
-        "player_role_dictionary",
-        JSON.stringify(giveRoles(playersList, charactersList))
-      );
-    }
+
     if (!playersCount) {
       props.history.push("/");
     } else if (
@@ -48,6 +47,16 @@ const GodVision = (props) => {
       props.history.push("/game-setup");
     } else {
       make(players);
+      // setPlayers(getLocalData("players"));
+      if (!player_role_dictionary) {
+        console.log("4")
+        localStorage.setItem(
+          "player_role_dictionary",
+          JSON.stringify(giveRoles(playersList, charactersList))
+        );
+        console.log(getLocalData("player_role_dictionary"))
+        setPlayersRoles(getLocalData("player_role_dictionary"));
+      }
     }
   }, [players, props.history]);
 
