@@ -5,8 +5,8 @@
 
     padding: 15px;
     border-radius: 20px;
-    box-shadow: 0 0 15px rgba(71, 58, 121, 0.5);   
-    margin: 5px 10px; 
+    box-shadow: 0 0 15px rgba(71, 58, 121, 0.5);
+    margin: 5px 10px;
     font-family: 'Cairo', sans-serif;
 }
 
@@ -15,9 +15,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 }
 
-.nameIndexContainer span{
+.nameIndexContainer span {
     margin-right: 12px;
 }
 
@@ -27,7 +28,7 @@
     color: rgb(85, 75, 122);
 }
 
-.nameIndexContainer h1{
+.nameIndexContainer h1 {
     color: #50cb93;
     font-size: 20px;
 }
@@ -68,4 +69,4 @@
         flex-direction: column;
         justify-content: space-between;
     }
-  }
+}

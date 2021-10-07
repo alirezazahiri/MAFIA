@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import styles from "../../styles/PlayerName.module.css";
 import tailwindStyles from "../../styles/tailwindClasses/Common";
 import getLocalData from "../../services/getLocalData";
+import { shorten } from "../../services/shorten";
 
 const PlayerName = ({ name, index, setPlayers, players }) => {
   const [canEdit, setCanEdit] = useState(false);
@@ -25,40 +26,43 @@ const PlayerName = ({ name, index, setPlayers, players }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    let newPlayers = players;
-    if (
-      !players.find(
-        (player) => player.trim().toLowerCase() === newName.trim().toLowerCase()
-      )
-    ) {
-      let playersRolesDict = getLocalData("player_role_dictionary");
-      // Player Role is given to the new player replaced with it 
-      const currentRole = playersRolesDict[players[index]];
-      delete playersRolesDict[players[index]];
-      const newKey = newName;
-      playersRolesDict[newKey] = currentRole;
+    if (newName === currentName) {
+      setCanEdit(false)
+    }
+    if (newName !== "") {
+      let newPlayers = players;
+      if (
+        !players.find(
+          (player) =>
+            player.trim().toLowerCase() === newName.trim().toLowerCase()
+        )
+      ) {
+        let playersRolesDict = getLocalData("player_role_dictionary");
+        // Player Role is given to the new player replaced with it
+        const currentRole = playersRolesDict[players[index]];
+        delete playersRolesDict[players[index]];
+        const newKey = newName;
+        playersRolesDict[newKey] = currentRole;
 
-      // Player Data is given to the new player replaced with it 
-      let playersData = getLocalData("players_data");
-      if (playersData) {
-        const currentData = playersData[players[index]];
-        delete playersData[players[index]];
-        playersData[newKey] = currentData;
+        // Player Data is given to the new player replaced with it
+        let playersData = getLocalData("players_data");
+        if (playersData) {
+          const currentData = playersData[players[index]];
+          delete playersData[players[index]];
+          playersData[newKey] = currentData;
+          localStorage.setItem("players_data", JSON.stringify(playersData));
+        }
+
+        setCurrentName(newName);
+        newPlayers[index] = newName;
+        setPlayers(newPlayers);
+        localStorage.setItem("players", JSON.stringify(newPlayers));
         localStorage.setItem(
-          "players_data",
-          JSON.stringify(playersData)
+          "player_role_dictionary",
+          JSON.stringify(playersRolesDict)
         );
+        setCanEdit(false);
       }
-
-      setCurrentName(newName);
-      newPlayers[index] = newName;
-      setPlayers(newPlayers);
-      localStorage.setItem("players", JSON.stringify(newPlayers));
-      localStorage.setItem(
-        "player_role_dictionary",
-        JSON.stringify(playersRolesDict)
-      );
-      setCanEdit(false);
     }
   };
 
@@ -81,7 +85,7 @@ const PlayerName = ({ name, index, setPlayers, players }) => {
             </button>
           </form>
         ) : (
-          <h1>{currentName}</h1>
+          <h1>{shorten(currentName)}</h1>
         )}
       </div>
       <i

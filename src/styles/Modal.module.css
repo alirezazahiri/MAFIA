@@ -17,4 +17,5 @@
 
 .headerContainer {
     border: none;
+    overflow: hidden;
 }

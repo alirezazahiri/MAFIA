@@ -17,6 +17,7 @@ import styles from "../../styles/Modal.module.css";
 import Modal from "react-bootstrap/Modal";
 import ScenarioCard from "../common/ScenarioCard";
 import { getModal } from "../../services/getData";
+import { shorten } from '../../services/shorten';
 
 const ModalAlt = ({
   show,
@@ -72,7 +73,7 @@ const ModalAlt = ({
         <Modal.Title>
           {type === "nameEnter" && remainingPlayers}
           {type === "charSelect" && remainingCharacters}
-          {type === "showRole" && playerName}
+          {type === "showRole" && shorten(playerName)}
         </Modal.Title>
         <div>
           <button

@@ -16,6 +16,9 @@
 
     transition: all 0.2s;
     font-family: 'Cairo', sans-serif;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .container:hover,

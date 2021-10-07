@@ -7,6 +7,7 @@ import getColor from "../../services/getColor";
 // Styles
 import styles from "../../styles/ManagePlayerCard.module.css";
 import tailwindStyles from "../../styles/tailwindClasses/Common";
+import { shorten } from '../../services/shorten';
 
 const ManagePlayerCard = ({ player, icon, role, type }) => {
   const playerData = getLocalData("players_data")
@@ -39,7 +40,7 @@ const ManagePlayerCard = ({ player, icon, role, type }) => {
       }}
     >
       <div className={styles.hedearContainer} style={{ color: color }}>
-        <h2>{player}</h2>
+        <h2>{shorten(player)}</h2>
         <i className={icon}></i>
         <h2>{role}</h2>
       </div>

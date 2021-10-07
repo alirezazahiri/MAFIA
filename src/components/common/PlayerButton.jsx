@@ -9,6 +9,7 @@ import { RolesContext } from "../../contexts/RolesContextProvider";
 // Styles
 import styles from "../../styles/PlayerButton.module.css"
 import ModalAlt from '../modals/ModalAlt';
+import { shorten } from '../../services/shorten';
 
 const PlayerButton = ({ player, playersRole }) => {
   const [showModal, setShowModal] = useState(false);
@@ -26,7 +27,7 @@ const PlayerButton = ({ player, playersRole }) => {
 
   return (
     <div className={styles.container}>
-      <button onClick={showHandler}>{player}</button>
+      <button onClick={showHandler}>{shorten(player, 30, 27)}</button>
       <ModalAlt
         type="showRole"
         show={showModal}
