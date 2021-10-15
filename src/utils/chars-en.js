@@ -639,7 +639,7 @@ const independents = [
     icon: "fa fa-tencent-weibo",
     title: "Sandica",
     description:
-      "مافیا، جاسوس، دکتر، کاراگاه و جانی را می شناسد. از حمله گروهی مافیا و جانی در امان است. با انتخاب در مرحله دوم رای گیری، یک نفر از لیست سیاه کشته می شود. شرط پیروزی او، باقی ماندن بین سه نفر آخر است",
+      "Knows, The Mafia, Spy, Detective, Malefactor and it stays safe after Malefactor or Mafia attacks. if it is voted to be on the second voting turn, will eliminate a black squad's player, if it last among last three people in the game, earns a victory.",
     max: 1,
     type: "independent",
   },
